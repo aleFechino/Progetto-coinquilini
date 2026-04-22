@@ -1,0 +1,70 @@
+CREATE DATABASE db_coinquilini;
+USE db_coinquilini;
+
+-- TABELLA CITTA
+CREATE TABLE citta (
+    idCitta INT AUTO_INCREMENT PRIMARY KEY,
+    nomeCitta VARCHAR(25) NOT NULL
+);
+
+-- TABELLA UTENTI
+CREATE TABLE utenti (
+    idUtente INT AUTO_INCREMENT PRIMARY KEY,
+    nomeUtente VARCHAR(50) NOT NULL,
+    cognomeUtente VARCHAR(50) NOT NULL,
+    sesso VARCHAR(10),
+    universita_lavoro VARCHAR(100),
+    ruolo VARCHAR(20) CHECK (ruolo IN ('offre_casa', 'cerca_casa')),
+    linguaParlata VARCHAR(50),
+    dataNascita DATE
+);
+
+-- TABELLA CASA
+CREATE TABLE casa (
+    idCasa INT AUTO_INCREMENT PRIMARY KEY,
+    nPosti INT NOT NULL,
+    via VARCHAR(50),
+    civico VARCHAR(4),
+    nStanzeLetto INT,
+    nBagni INT,
+    metratura INT,
+    descrizione TEXT,
+    idCitta INT,
+    idProprietario INT,
+    FOREIGN KEY (idCitta) REFERENCES citta(idCitta),
+    FOREIGN KEY (idProprietario) REFERENCES utenti(idUtente)
+);
+
+-- TABELLA UTENTE_CASA
+CREATE TABLE utente_casa (
+    idUtente INT,
+    idCasa INT,
+    PRIMARY KEY (idUtente, idCasa),
+    FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+    FOREIGN KEY (idCasa) REFERENCES casa(idCasa)
+);
+
+-- TABELLA INTERESSI
+CREATE TABLE interessi (
+    idInteresse INT AUTO_INCREMENT PRIMARY KEY,
+    nomeInteresse VARCHAR(50) NOT NULL
+);
+
+-- TABELLA UTENTE_INTERESSI
+CREATE TABLE utente_interessi (
+    idUtente INT,
+    idInteresse INT,
+    PRIMARY KEY (idUtente, idInteresse),
+    FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+    FOREIGN KEY (idInteresse) REFERENCES interessi(idInteresse)
+);
+
+-- TABELLA UTENTE_VISTO_UTENTE
+CREATE TABLE utente_visto_utente (
+    idUtente INT,
+    idUtenteVisto INT,
+    mi_piace BOOLEAN,
+    PRIMARY KEY (idUtente, idUtenteVisto),
+    FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+    FOREIGN KEY (idUtenteVisto) REFERENCES utenti(idUtente)
+);

@@ -36,7 +36,7 @@ CREATE TABLE utenti (
 
 &nbsp;   universita\_lavoro VARCHAR(100),
 
-&nbsp;   ruolo VARCHAR(20) CHECK (ruolo IN ('offre\_casa', 'cerca\_casa')),
+&nbsp;   ruolo VARCHAR(20) CHECK (ruolo IN ('offre\_casa', 'cerca\_casa', 'cerca\_offre\_casa')),
 
 &nbsp;   linguaParlata VARCHAR(50),
 

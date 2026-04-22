@@ -14,9 +14,9 @@ USE db\_coinquilini;
 
 CREATE TABLE citta (
 
-&nbsp; idCitta INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idCitta INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nomeCitta VARCHAR(25) NOT NULL
+&nbsp;   nomeCitta VARCHAR(25) NOT NULL
 
 );
 
@@ -26,31 +26,31 @@ CREATE TABLE citta (
 
 CREATE TABLE utenti (
 
-&nbsp; idUtente INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idUtente INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nomeUtente VARCHAR(50) NOT NULL,
+&nbsp;   nomeUtente VARCHAR(50) NOT NULL,
 
-&nbsp; cognomeUtente VARCHAR(50) NOT NULL,
+&nbsp;   cognomeUtente VARCHAR(50) NOT NULL,
 
-&nbsp; sesso VARCHAR(10),
+&nbsp;   sesso VARCHAR(10),
 
-&nbsp; universita\_lavoro VARCHAR(100),
+&nbsp;   universita\_lavoro VARCHAR(100),
 
-&nbsp; ruolo VARCHAR(20) CHECK (ruolo IN ('offre\_casa', 'cerca\_casa')),
+&nbsp;   ruolo VARCHAR(20) CHECK (ruolo IN ('offre\_casa', 'cerca\_casa')),
 
-&nbsp; linguaParlata VARCHAR(50),
+&nbsp;   linguaParlata VARCHAR(50),
 
-&nbsp; dataNascita DATE,
+&nbsp;   dataNascita DATE,
 
-&nbsp; mail VARCHAR(100) NOT NULL UNIQUE,
+&nbsp;   mail VARCHAR(100) NOT NULL UNIQUE,
 
-&nbsp; psw VARCHAR(255) NOT NULL,
+&nbsp;   psw VARCHAR(255) NOT NULL,
 
-&nbsp; cellulare VARCHAR(15),
+&nbsp;   cellulare VARCHAR(15),
 
-&nbsp; soprannome VARCHAR(50),
+&nbsp;   soprannome VARCHAR(50),
 
-&nbsp; nickname\_instagram VARCHAR(50)
+&nbsp;   nickname\_instagram VARCHAR(50)
 
 );
 
@@ -60,29 +60,35 @@ CREATE TABLE utenti (
 
 CREATE TABLE casa (
 
-&nbsp; idCasa INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idCasa INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nPosti INT NOT NULL,
+&nbsp;   nPosti INT NOT NULL,
 
-&nbsp; via VARCHAR(50),
+&nbsp;   via VARCHAR(50),
 
-&nbsp; civico VARCHAR(4),
+&nbsp;   civico VARCHAR(4),
 
-&nbsp; nStanzeLetto INT,
+&nbsp;   cap VARCHAR(5),
 
-&nbsp; nBagni INT,
+&nbsp;   nStanzeLetto INT,
 
-&nbsp; metratura INT,
+&nbsp;   nBagni INT,
 
-&nbsp; descrizione TEXT,
+&nbsp;   metratura INT,
 
-&nbsp; idCitta INT,
+&nbsp;   descrizione TEXT,
 
-&nbsp; idProprietario INT,
+&nbsp;   lat DECIMAL(9,6),
 
-&nbsp; FOREIGN KEY (idCitta) REFERENCES citta(idCitta),
+&nbsp;   lng DECIMAL(9,6),
 
-&nbsp; FOREIGN KEY (idProprietario) REFERENCES utenti(idUtente)
+&nbsp;   idCitta INT,
+
+&nbsp;   idProprietario INT,
+
+&nbsp;   FOREIGN KEY (idCitta) REFERENCES citta(idCitta),
+
+&nbsp;   FOREIGN KEY (idProprietario) REFERENCES utenti(idUtente)
 
 );
 
@@ -92,15 +98,15 @@ CREATE TABLE casa (
 
 CREATE TABLE utente\_casa (
 
-&nbsp; idUtente INT,
+&nbsp;   idUtente INT,
 
-&nbsp; idCasa INT,
+&nbsp;   idCasa INT,
 
-&nbsp; PRIMARY KEY (idUtente, idCasa),
+&nbsp;   PRIMARY KEY (idUtente, idCasa),
 
-&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+&nbsp;   FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-&nbsp; FOREIGN KEY (idCasa) REFERENCES casa(idCasa)
+&nbsp;   FOREIGN KEY (idCasa) REFERENCES casa(idCasa)
 
 );
 
@@ -110,9 +116,9 @@ CREATE TABLE utente\_casa (
 
 CREATE TABLE interessi (
 
-&nbsp; idInteresse INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idInteresse INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nomeInteresse VARCHAR(50) NOT NULL
+&nbsp;   nomeInteresse VARCHAR(50) NOT NULL
 
 );
 
@@ -122,15 +128,15 @@ CREATE TABLE interessi (
 
 CREATE TABLE utente\_interessi (
 
-&nbsp; idUtente INT,
+&nbsp;   idUtente INT,
 
-&nbsp; idInteresse INT,
+&nbsp;   idInteresse INT,
 
-&nbsp; PRIMARY KEY (idUtente, idInteresse),
+&nbsp;   PRIMARY KEY (idUtente, idInteresse),
 
-&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+&nbsp;   FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-&nbsp; FOREIGN KEY (idInteresse) REFERENCES interessi(idInteresse)
+&nbsp;   FOREIGN KEY (idInteresse) REFERENCES interessi(idInteresse)
 
 );
 
@@ -140,9 +146,9 @@ CREATE TABLE utente\_interessi (
 
 CREATE TABLE personalita (
 
-&nbsp; idPersonalita INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idPersonalita INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nomePersonalita VARCHAR(50) NOT NULL
+&nbsp;   nomePersonalita VARCHAR(50) NOT NULL
 
 );
 
@@ -152,15 +158,15 @@ CREATE TABLE personalita (
 
 CREATE TABLE utente\_personalita (
 
-&nbsp; idUtente INT,
+&nbsp;   idUtente INT,
 
-&nbsp; idPersonalita INT,
+&nbsp;   idPersonalita INT,
 
-&nbsp; PRIMARY KEY (idUtente, idPersonalita),
+&nbsp;   PRIMARY KEY (idUtente, idPersonalita),
 
-&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+&nbsp;   FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-&nbsp; FOREIGN KEY (idPersonalita) REFERENCES personalita(idPersonalita)
+&nbsp;   FOREIGN KEY (idPersonalita) REFERENCES personalita(idPersonalita)
 
 );
 
@@ -170,9 +176,9 @@ CREATE TABLE utente\_personalita (
 
 CREATE TABLE abitudini (
 
-&nbsp; idAbitudine INT AUTO\_INCREMENT PRIMARY KEY,
+&nbsp;   idAbitudine INT AUTO\_INCREMENT PRIMARY KEY,
 
-&nbsp; nomeAbitudine VARCHAR(50) NOT NULL
+&nbsp;   nomeAbitudine VARCHAR(50) NOT NULL
 
 );
 
@@ -182,15 +188,15 @@ CREATE TABLE abitudini (
 
 CREATE TABLE utente\_abitudini (
 
-&nbsp; idUtente INT,
+&nbsp;   idUtente INT,
 
-&nbsp; idAbitudine INT,
+&nbsp;   idAbitudine INT,
 
-&nbsp; PRIMARY KEY (idUtente, idAbitudine),
+&nbsp;   PRIMARY KEY (idUtente, idAbitudine),
 
-&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+&nbsp;   FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-&nbsp; FOREIGN KEY (idAbitudine) REFERENCES abitudini(idAbitudine)
+&nbsp;   FOREIGN KEY (idAbitudine) REFERENCES abitudini(idAbitudine)
 
 );
 
@@ -200,21 +206,19 @@ CREATE TABLE utente\_abitudini (
 
 CREATE TABLE utente\_visto\_utente (
 
-&nbsp; idUtente INT,
+&nbsp;   idUtente INT,
 
-&nbsp; idUtenteVisto INT,
+&nbsp;   idUtenteVisto INT,
 
-&nbsp; mi\_piace BOOLEAN,
+&nbsp;   mi\_piace BOOLEAN,
 
-&nbsp; PRIMARY KEY (idUtente, idUtenteVisto),
+&nbsp;   PRIMARY KEY (idUtente, idUtenteVisto),
 
-&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+&nbsp;   FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-&nbsp; FOREIGN KEY (idUtenteVisto) REFERENCES utenti(idUtente)
+&nbsp;   FOREIGN KEY (idUtenteVisto) REFERENCES utenti(idUtente)
 
 );
-
-
 
 
 

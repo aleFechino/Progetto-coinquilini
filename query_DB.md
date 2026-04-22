@@ -1,4 +1,6 @@
-# **CREAZIONE DATABASE E TABELLE**
+# **CREAZIONE DATABASE**
+
+
 
 
 
@@ -134,6 +136,66 @@ CREATE TABLE utente\_interessi (
 
 
 
+-- TABELLA PERSONALITA
+
+CREATE TABLE personalita (
+
+&nbsp; idPersonalita INT AUTO\_INCREMENT PRIMARY KEY,
+
+&nbsp; nomePersonalita VARCHAR(50) NOT NULL
+
+);
+
+
+
+-- TABELLA UTENTE\_PERSONALITA
+
+CREATE TABLE utente\_personalita (
+
+&nbsp; idUtente INT,
+
+&nbsp; idPersonalita INT,
+
+&nbsp; PRIMARY KEY (idUtente, idPersonalita),
+
+&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+
+&nbsp; FOREIGN KEY (idPersonalita) REFERENCES personalita(idPersonalita)
+
+);
+
+
+
+-- TABELLA ABITUDINI
+
+CREATE TABLE abitudini (
+
+&nbsp; idAbitudine INT AUTO\_INCREMENT PRIMARY KEY,
+
+&nbsp; nomeAbitudine VARCHAR(50) NOT NULL
+
+);
+
+
+
+-- TABELLA UTENTE\_ABITUDINI
+
+CREATE TABLE utente\_abitudini (
+
+&nbsp; idUtente INT,
+
+&nbsp; idAbitudine INT,
+
+&nbsp; PRIMARY KEY (idUtente, idAbitudine),
+
+&nbsp; FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+
+&nbsp; FOREIGN KEY (idAbitudine) REFERENCES abitudini(idAbitudine)
+
+);
+
+
+
 -- TABELLA UTENTE\_VISTO\_UTENTE
 
 CREATE TABLE utente\_visto\_utente (
@@ -160,195 +222,133 @@ CREATE TABLE utente\_visto\_utente (
 
 
 
+# **POPOLAZIONE**
 
 
 
+-- CITTA
 
-# **POPOLAZIONE TABELLE**
+INSERT INTO citta (nomeCitta) VALUES ('Torino');
 
 
 
+-- UTENTI (20)
 
+INSERT INTO utenti (nomeUtente, cognomeUtente, sesso, universita\_lavoro, ruolo, linguaParlata, dataNascita, mail, psw, cellulare, soprannome, nickname\_instagram) VALUES
 
-**-- CITTA**
+('Marco',      'Rossi',      'M', 'Politecnico di Torino',  'offre\_casa',  'Italiano',   '1998-03-15', 'marco.rossi@email.it',       '$2b$12$hashed\_pw\_01', '3201234567',  'Mark',  'marco.rossi98'),
 
-**INSERT INTO citta (nomeCitta) VALUES ('Torino');**
+('Giulia',     'Ferrari',    'F', 'Università di Torino',   'cerca\_casa',  'Italiano',   '2000-07-22', 'giulia.ferrari@email.it',    '$2b$12$hashed\_pw\_02', '3387654321',  'Giuli', 'giulia.ferrari'),
 
+('Luca',       'Bianchi',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1999-11-05', 'luca.bianchi@email.it',      '$2b$12$hashed\_pw\_03', NULL,          'Luke',  'luca.bianchi99'),
 
+('Sofia',      'Esposito',   'F', 'Università di Torino',   'offre\_casa',  'Italiano',   '1997-04-30', 'sofia.esposito@email.it',    '$2b$12$hashed\_pw\_04', '3451239876',  NULL,    'sofia.espo'),
 
-**-- INTERESSI**
+('Ahmed',      'Ben Ali',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Arabo',      '2001-01-18', 'ahmed.benali@email.it',      '$2b$12$hashed\_pw\_05', '3209876543',  'Ahm',   NULL),
 
-**INSERT INTO interessi (nomeInteresse) VALUES**
+('Elena',      'Conti',      'F', 'IED Torino',             'cerca\_casa',  'Italiano',   '2000-09-12', 'elena.conti@email.it',       '$2b$12$hashed\_pw\_06', '3331122334',  NULL,    'elena.conti\_ied'),
 
-**('Calcio'), ('Basket'), ('Cucina'), ('Musica'), ('Viaggi'),**
+('Matteo',     'Ricci',      'M', 'Università di Torino',   'offre\_casa',  'Italiano',   '1996-06-25', 'matteo.ricci@email.it',      '$2b$12$hashed\_pw\_07', '3484433221',  'Matt',  'matteo.ricci96'),
 
-**('Gaming'), ('Lettura'), ('Palestra'), ('Cinema'), ('Fotografia');**
+('Anna',       'Lombardi',   'F', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '2002-02-14', 'anna.lombardi@email.it',     '$2b$12$hashed\_pw\_08', '3667788990',  NULL,    NULL),
 
+('Kevin',      'Dupont',     'M', 'Università di Torino',   'cerca\_casa',  'Francese',   '1999-08-03', 'kevin.dupont@email.fr',      '$2b$12$hashed\_pw\_09', NULL,          'Kev',   'kevin.dupont\_to'),
 
+('Chiara',     'Moretti',    'F', 'Accademia Albertina',    'cerca\_casa',  'Italiano',   '2001-05-19', 'chiara.moretti@email.it',    '$2b$12$hashed\_pw\_10', '3209988776',  'Chia',  'chiara.moretti\_art'),
 
-**-- UTENTI (20)**
+('Davide',     'Gallo',      'M', 'Politecnico di Torino',  'offre\_casa',  'Italiano',   '1995-12-07', 'davide.gallo@email.it',      '$2b$12$hashed\_pw\_11', '3451122334',  'Dave',  'davide.gallo'),
 
-**INSERT INTO utenti (nomeUtente, cognomeUtente, sesso, universita\_lavoro, ruolo, linguaParlata, dataNascita, mail, psw, cellulare, soprannome, nickname\_instagram) VALUES**
+('Martina',    'Bruno',      'F', 'Università di Torino',   'cerca\_casa',  'Italiano',   '2000-03-28', 'martina.bruno@email.it',     '$2b$12$hashed\_pw\_12', '3381234500',  NULL,    'martina.bruno00'),
 
-**('Marco',      'Rossi',      'M', 'Politecnico di Torino',  'offre\_casa',  'Italiano',   '1998-03-15', 'marco.rossi@email.it',       '$2b$12$hashed\_pw\_01', '3201234567',  'Mark',    'marco.rossi98'),**
+('Alessandro', 'Marino',     'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1998-10-11', 'alessandro.marino@email.it', '$2b$12$hashed\_pw\_13', '3556677889',  'Alex',  'alex.marino98'),
 
-**('Giulia',     'Ferrari',    'F', 'Università di Torino',   'cerca\_casa',  'Italiano',   '2000-07-22', 'giulia.ferrari@email.it',    '$2b$12$hashed\_pw\_02', '3387654321',  'Giuli',   'giulia.ferrari'),**
+('Sara',       'Greco',      'F', 'IED Torino',             'offre\_casa',  'Italiano',   '1997-07-16', 'sara.greco@email.it',        '$2b$12$hashed\_pw\_14', '3471020304',  NULL,    'sara.greco\_photo'),
 
-**('Luca',       'Bianchi',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1999-11-05', 'luca.bianchi@email.it',      '$2b$12$hashed\_pw\_03', NULL,          'Luke',    'luca.bianchi99'),**
+('Yuki',       'Tanaka',     'F', 'Università di Torino',   'cerca\_casa',  'Giapponese', '2001-04-09', 'yuki.tanaka@email.jp',       '$2b$12$hashed\_pw\_15', NULL,          'Yuk',   'yuki.tanaka\_jp'),
 
-**('Sofia',      'Esposito',   'F', 'Università di Torino',   'offre\_casa',  'Italiano',   '1997-04-30', 'sofia.esposito@email.it',    '$2b$12$hashed\_pw\_04', '3451239876',  NULL,      'sofia.espo'),**
+('Federico',   'Colombo',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1999-01-23', 'federico.colombo@email.it',  '$2b$12$hashed\_pw\_16', '3209871234',  'Fede',  'fede.colombo'),
 
-**('Ahmed',      'Ben Ali',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Arabo',      '2001-01-18', 'ahmed.benali@email.it',      '$2b$12$hashed\_pw\_05', '3209876543',  'Ahm',     NULL),**
+('Valentina',  'Mancini',    'F', 'Università di Torino',   'offre\_casa',  'Italiano',   '1996-11-30', 'valentina.mancini@email.it', '$2b$12$hashed\_pw\_17', '3381234567',  'Vale',  'vale.mancini96'),
 
-**('Elena',      'Conti',      'F', 'IED Torino',             'cerca\_casa',  'Italiano',   '2000-09-12', 'elena.conti@email.it',       '$2b$12$hashed\_pw\_06', '3331122334',  NULL,      'elena.conti\_ied'),**
+('Carlos',     'Ramirez',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Spagnolo',   '2000-06-04', 'carlos.ramirez@email.es',    '$2b$12$hashed\_pw\_18', '3461239870',  'Carly', 'carlos.ramirez\_to'),
 
-**('Matteo',     'Ricci',      'M', 'Università di Torino',   'offre\_casa',  'Italiano',   '1996-06-25', 'matteo.ricci@email.it',      '$2b$12$hashed\_pw\_07', '3484433221',  'Matt',    'matteo.ricci96'),**
+('Beatrice',   'Fontana',    'F', 'Accademia Albertina',    'cerca\_casa',  'Italiano',   '2002-08-17', 'beatrice.fontana@email.it',  '$2b$12$hashed\_pw\_19', NULL,          'Bea',   'bea.fontana\_art'),
 
-**('Anna',       'Lombardi',   'F', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '2002-02-14', 'anna.lombardi@email.it',     '$2b$12$hashed\_pw\_08', '3667788990',  NULL,      NULL),**
+('Simone',     'De Luca',    'M', 'Università di Torino',   'offre\_casa',  'Italiano',   '1994-09-21', 'simone.deluca@email.it',     '$2b$12$hashed\_pw\_20', '3209876001',  'Simo',  'simone.deluca');
 
-**('Kevin',      'Dupont',     'M', 'Università di Torino',   'cerca\_casa',  'Francese',   '1999-08-03', 'kevin.dupont@email.fr',      '$2b$12$hashed\_pw\_09', NULL,          'Kev',     'kevin.dupont\_to'),**
 
-**('Chiara',     'Moretti',    'F', 'Accademia Albertina',    'cerca\_casa',  'Italiano',   '2001-05-19', 'chiara.moretti@email.it',    '$2b$12$hashed\_pw\_10', '3209988776',  'Chia',    'chiara.moretti\_art'),**
 
-**('Davide',     'Gallo',      'M', 'Politecnico di Torino',  'offre\_casa',  'Italiano',   '1995-12-07', 'davide.gallo@email.it',      '$2b$12$hashed\_pw\_11', '3451122334',  'Dave',    'davide.gallo'),**
+-- CASE
 
-**('Martina',    'Bruno',      'F', 'Università di Torino',   'cerca\_casa',  'Italiano',   '2000-03-28', 'martina.bruno@email.it',     '$2b$12$hashed\_pw\_12', '3381234500',  NULL,      'martina.bruno00'),**
+INSERT INTO casa (nPosti, via, civico, nStanzeLetto, nBagni, metratura, descrizione, idCitta, idProprietario) VALUES
 
-**('Alessandro', 'Marino',     'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1998-10-11', 'alessandro.marino@email.it', '$2b$12$hashed\_pw\_13', '3556677889',  'Alex',    'alex.marino98'),**
+(3, 'Via Po',         '12',  2, 1,  75,  'Appartamento luminoso vicino al Po',            1, 1),
 
-**('Sara',       'Greco',      'F', 'IED Torino',             'offre\_casa',  'Italiano',   '1997-07-16', 'sara.greco@email.it',        '$2b$12$hashed\_pw\_14', '3471020304',  NULL,      'sara.greco\_photo'),**
+(4, 'Via Roma',       '45',  3, 2,  90,  'Ampio appartamento in centro, vicino ai mezzi', 1, 4),
 
-**('Yuki',       'Tanaka',     'F', 'Università di Torino',   'cerca\_casa',  'Giapponese', '2001-04-09', 'yuki.tanaka@email.jp',       '$2b$12$hashed\_pw\_15', NULL,          'Yuk',     'yuki.tanaka\_jp'),**
+(2, 'Corso Vittorio', '8',   1, 1,  55,  'Bilocale moderno, ottima posizione',            1, 7),
 
-**('Federico',   'Colombo',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Italiano',   '1999-01-23', 'federico.colombo@email.it',  '$2b$12$hashed\_pw\_16', '3209871234',  'Fede',    'fede.colombo'),**
+(5, 'Via Garibaldi',  '33',  4, 2, 110,  'Grande casa ideale per studenti universitari',  1, 11),
 
-**('Valentina',  'Mancini',    'F', 'Università di Torino',   'offre\_casa',  'Italiano',   '1996-11-30', 'valentina.mancini@email.it', '$2b$12$hashed\_pw\_17', '3381234567',  'Vale',    'vale.mancini96'),**
+(3, 'Via Nizza',      '67',  2, 1,  80,  'Vicino alla stazione Porta Nuova, ben servita', 1, 14),
 
-**('Carlos',     'Ramirez',    'M', 'Politecnico di Torino',  'cerca\_casa',  'Spagnolo',   '2000-06-04', 'carlos.ramirez@email.es',    '$2b$12$hashed\_pw\_18', '3461239870',  'Carly',   'carlos.ramirez\_to'),**
+(2, 'Corso Francia',  '21',  1, 1,  60,  'Appartamento tranquillo in zona residenziale',  1, 17),
 
-**('Beatrice',   'Fontana',    'F', 'Accademia Albertina',    'cerca\_casa',  'Italiano',   '2002-08-17', 'beatrice.fontana@email.it',  '$2b$12$hashed\_pw\_19', NULL,          'Bea',     'bea.fontana\_art'),**
+(4, 'Via Lagrange',   '5',   3, 2,  95,  'Ristrutturato di recente, arredato con gusto',  1, 20);
 
-**('Simone',     'De Luca',    'M', 'Università di Torino',   'offre\_casa',  'Italiano',   '1994-09-21', 'simone.deluca@email.it',     '$2b$12$hashed\_pw\_20', '3209876001',  'Simo',    'simone.deluca');**
 
 
+-- UTENTE\_CASA
 
-**-- CASE (tutte a Torino, idCitta = 1)**
+INSERT INTO utente\_casa (idUtente, idCasa) VALUES
 
-**INSERT INTO casa (nPosti, via, civico, nStanzeLetto, nBagni, metratura, descrizione, idCitta, idProprietario) VALUES**
+(2,  1), (3,  1),
 
-**(3, 'Via Po',         '12',  2, 1,  75,  'Appartamento luminoso vicino al Po',                    1, 1),**
+(5,  2), (6,  2), (8,  2),
 
-**(4, 'Via Roma',       '45',  3, 2,  90,  'Ampio appartamento in centro, vicino ai mezzi',         1, 4),**
+(9,  3),
 
-**(2, 'Corso Vittorio', '8',   1, 1,  55,  'Bilocale moderno, ottima posizione',                    1, 7),**
+(10, 4), (12, 4), (13, 4), (15, 4),
 
-**(5, 'Via Garibaldi',  '33',  4, 2, 110,  'Grande casa ideale per studenti universitari',          1, 11),**
+(16, 5), (18, 5),
 
-**(3, 'Via Nizza',      '67',  2, 1,  80,  'Vicino alla stazione Porta Nuova, ben servita',         1, 14),**
+(19, 6),
 
-**(2, 'Corso Francia',  '21',  1, 1,  60,  'Appartamento tranquillo in zona residenziale',          1, 17),**
+(1,  7), (4,  7);
 
-**(4, 'Via Lagrange',   '5',   3, 2,  95,  'Ristrutturato di recente, arredato con gusto',          1, 20);**
 
 
+-- UTENTE\_VISTO\_UTENTE
 
-**-- UTENTE\_CASA**
+INSERT INTO utente\_visto\_utente (idUtente, idUtenteVisto, mi\_piace) VALUES
 
-**INSERT INTO utente\_casa (idUtente, idCasa) VALUES**
+(2,  3,  TRUE),
 
-**(2,  1), (3,  1),**
+(3,  2,  TRUE),
 
-**(5,  2), (6,  2), (8,  2),**
+(5,  6,  TRUE),
 
-**(9,  3),**
+(6,  5,  FALSE),
 
-**(10, 4), (12, 4), (13, 4), (15, 4),**
+(8,  12, TRUE),
 
-**(16, 5), (18, 5),**
+(12, 8,  TRUE),
 
-**(19, 6),**
+(9,  16, FALSE),
 
-**(1,  7), (4,  7);**
+(16, 9,  TRUE),
 
+(10, 13, TRUE),
 
+(13, 10, FALSE),
 
-**-- UTENTE\_INTERESSI**
+(15, 19, TRUE),
 
-**INSERT INTO utente\_interessi (idUtente, idInteresse) VALUES**
+(19, 15, TRUE),
 
-**(1,  1), (1,  2),**
+(18, 5,  FALSE),
 
-**(2,  3), (2,  9),**
+(1,  7,  TRUE),
 
-**(3,  6), (3,  7),**
-
-**(4,  4), (4,  5),**
-
-**(5,  1), (5,  6),**
-
-**(6,  10),(6,  4),**
-
-**(7,  8), (7,  1),**
-
-**(8,  3), (8,  9),**
-
-**(9,  5), (9,  10),**
-
-**(10, 4), (10, 7),**
-
-**(11, 1), (11, 8),**
-
-**(12, 2), (12, 3),**
-
-**(13, 6), (13, 1),**
-
-**(14, 9), (14, 4),**
-
-**(15, 5), (15, 7),**
-
-**(16, 8), (16, 6),**
-
-**(17, 3), (17, 2),**
-
-**(18, 1), (18, 5),**
-
-**(19, 10),(19, 9),**
-
-**(20, 7), (20, 8);**
-
-
-
-**-- UTENTE\_VISTO\_UTENTE**
-
-**INSERT INTO utente\_visto\_utente (idUtente, idUtenteVisto, mi\_piace) VALUES**
-
-**(2,  3,  TRUE),**
-
-**(3,  2,  TRUE),**
-
-**(5,  6,  TRUE),**
-
-**(6,  5,  FALSE),**
-
-**(8,  12, TRUE),**
-
-**(12, 8,  TRUE),**
-
-**(9,  16, FALSE),**
-
-**(16, 9,  TRUE),**
-
-**(10, 13, TRUE),**
-
-**(13, 10, FALSE),**
-
-**(15, 19, TRUE),**
-
-**(19, 15, TRUE),**
-
-**(18, 5,  FALSE),**
-
-**(1,  7,  TRUE),**
-
-**(7,  1,  TRUE);**
+(7,  1,  TRUE);
 

@@ -1,198 +1,198 @@
-# **CREATE DATABASE db\_coinquilini;**
+CREATE DATABASE db\_coinquilini;
 
-# **USE db\_coinquilini;**
+USE db\_coinquilini;
 
-# 
 
-# **CREATE TABLE citta (**
 
-#   **idCitta INT AUTO\_INCREMENT PRIMARY KEY,**
+CREATE TABLE citta (
 
-#   **nomeCitta VARCHAR(25) NOT NULL**
+idCitta INT AUTO\_INCREMENT PRIMARY KEY,
 
-# **);**
+nomeCitta VARCHAR(25) NOT NULL
 
-# 
+);
 
-# **CREATE TABLE utenti (**
 
-#   **idUtente INT AUTO\_INCREMENT PRIMARY KEY,**
 
-#   **nomeUtente VARCHAR(50) NOT NULL,**
+CREATE TABLE utenti (
 
-#   **cognomeUtente VARCHAR(50) NOT NULL,**
+idUtente INT AUTO\_INCREMENT PRIMARY KEY,
 
-#   **sesso VARCHAR(10),**
+nomeUtente VARCHAR(50) NOT NULL,
 
-#   **universita\_lavoro VARCHAR(100),**
+cognomeUtente VARCHAR(50) NOT NULL,
 
-#   **cerca\_casa BOOLEAN,**
+sesso VARCHAR(10),
 
-#   **offre\_casa BOOLEAN,**
+universita\_lavoro VARCHAR(100),
 
-#   **linguaParlata VARCHAR(50),**
+cerca\_casa BOOLEAN,
 
-#   **dataNascita DATE,**
+offre\_casa BOOLEAN,
 
-#   **mail VARCHAR(100) NOT NULL UNIQUE,**
+linguaParlata VARCHAR(50),
 
-#   **psw VARCHAR(255) NOT NULL,**
+dataNascita DATE,
 
-#   **cellulare VARCHAR(15),**
+mail VARCHAR(100) NOT NULL UNIQUE,
 
-#   **soprannome VARCHAR(50),**
+psw VARCHAR(255) NOT NULL,
 
-#   **nickname\_instagram VARCHAR(50)**
+cellulare VARCHAR(15),
 
-# **);**
+soprannome VARCHAR(50),
 
-# 
+nickname\_instagram VARCHAR(50)
 
-# **CREATE TABLE casa (**
+);
 
-#   **idCasa INT AUTO\_INCREMENT PRIMARY KEY,**
 
-#   **nPosti INT NOT NULL,**
 
-#   **via VARCHAR(50),**
+CREATE TABLE casa (
 
-#   **civico VARCHAR(4),**
+idCasa INT AUTO\_INCREMENT PRIMARY KEY,
 
-#   **cap VARCHAR(5),**
+nPosti INT NOT NULL,
 
-#   **nStanzeLetto INT,**
+via VARCHAR(50),
 
-#   **nBagni INT,**
+civico VARCHAR(4),
 
-#   **metratura INT,**
+cap VARCHAR(5),
 
-#   **descrizione TEXT,**
+nStanzeLetto INT,
 
-#   **lat DECIMAL(9,6),**
+nBagni INT,
 
-#   **lng DECIMAL(9,6),**
+metratura INT,
 
-#   **idCitta INT,**
+descrizione TEXT,
 
-#   **idProprietario INT,**
+lat DECIMAL(9,6),
 
-#   **FOREIGN KEY (idCitta) REFERENCES citta(idCitta),**
+lng DECIMAL(9,6),
 
-#   **FOREIGN KEY (idProprietario) REFERENCES utenti(idUtente)**
+idCitta INT,
 
-# **);**
+idProprietario INT,
 
-# 
+FOREIGN KEY (idCitta) REFERENCES citta(idCitta),
 
-# **CREATE TABLE utente\_casa (**
+FOREIGN KEY (idProprietario) REFERENCES utenti(idUtente)
 
-#   **idUtente INT,**
+);
 
-#   **idCasa INT,**
 
-#   **PRIMARY KEY (idUtente, idCasa),**
 
-#   **FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),**
+CREATE TABLE utente\_casa (
 
-#   **FOREIGN KEY (idCasa) REFERENCES casa(idCasa)**
+idUtente INT,
 
-# **);**
+idCasa INT,
 
-# 
+PRIMARY KEY (idUtente, idCasa),
 
-# **CREATE TABLE interessi (**
+FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-#   **idInteresse INT AUTO\_INCREMENT PRIMARY KEY,**
+FOREIGN KEY (idCasa) REFERENCES casa(idCasa)
 
-#   **nomeInteresse VARCHAR(50) NOT NULL**
+);
 
-# **);**
 
-# 
 
-# **CREATE TABLE utente\_interessi (**
+CREATE TABLE interessi (
 
-#   **idUtente INT,**
+idInteresse INT AUTO\_INCREMENT PRIMARY KEY,
 
-#   **idInteresse INT,**
+nomeInteresse VARCHAR(50) NOT NULL
 
-#   **PRIMARY KEY (idUtente, idInteresse),**
+);
 
-#   **FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),**
 
-#   **FOREIGN KEY (idInteresse) REFERENCES interessi(idInteresse)**
 
-# **);**
+CREATE TABLE utente\_interessi (
 
-# 
+idUtente INT,
 
-# **CREATE TABLE personalita (**
+idInteresse INT,
 
-#   **idPersonalita INT AUTO\_INCREMENT PRIMARY KEY,**
+PRIMARY KEY (idUtente, idInteresse),
 
-#   **nomePersonalita VARCHAR(50) NOT NULL**
+FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-# **);**
+FOREIGN KEY (idInteresse) REFERENCES interessi(idInteresse)
 
-# 
+);
 
-# **CREATE TABLE utente\_personalita (**
 
-#   **idUtente INT,**
 
-#   **idPersonalita INT,**
+CREATE TABLE personalita (
 
-#   **PRIMARY KEY (idUtente, idPersonalita),**
+idPersonalita INT AUTO\_INCREMENT PRIMARY KEY,
 
-#   **FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),**
+nomePersonalita VARCHAR(50) NOT NULL
 
-#   **FOREIGN KEY (idPersonalita) REFERENCES personalita(idPersonalita)**
+);
 
-# **);**
 
-# 
 
-# **CREATE TABLE abitudini (**
+CREATE TABLE utente\_personalita (
 
-#   **idAbitudine INT AUTO\_INCREMENT PRIMARY KEY,**
+idUtente INT,
 
-#   **nomeAbitudine VARCHAR(50) NOT NULL**
+idPersonalita INT,
 
-# **);**
+PRIMARY KEY (idUtente, idPersonalita),
 
-# 
+FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-# **CREATE TABLE utente\_abitudini (**
+FOREIGN KEY (idPersonalita) REFERENCES personalita(idPersonalita)
 
-#   **idUtente INT,**
+);
 
-#   **idAbitudine INT,**
 
-#   **valore INT,**
 
-#   **PRIMARY KEY (idUtente, idAbitudine),**
+CREATE TABLE abitudini (
 
-#   **FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),**
+idAbitudine INT AUTO\_INCREMENT PRIMARY KEY,
 
-#   **FOREIGN KEY (idAbitudine) REFERENCES abitudini(idAbitudine)**
+nomeAbitudine VARCHAR(50) NOT NULL
 
-# **);**
+);
 
-# 
 
-# **CREATE TABLE utente\_visto\_utente (**
 
-#   **idUtente INT,**
+CREATE TABLE utente\_abitudini (
 
-#   **idUtenteVisto INT,**
+idUtente INT,
 
-#   **mi\_piace BOOLEAN,**
+idAbitudine INT,
 
-#   **PRIMARY KEY (idUtente, idUtenteVisto),**
+valore INT,
 
-#   **FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),**
+PRIMARY KEY (idUtente, idAbitudine),
 
-#   **FOREIGN KEY (idUtenteVisto) REFERENCES utenti(idUtente)**
+FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
 
-# **);**
+FOREIGN KEY (idAbitudine) REFERENCES abitudini(idAbitudine)
+
+);
+
+
+
+CREATE TABLE utente\_visto\_utente (
+
+idUtente INT,
+
+idUtenteVisto INT,
+
+mi\_piace BOOLEAN,
+
+PRIMARY KEY (idUtente, idUtenteVisto),
+
+FOREIGN KEY (idUtente) REFERENCES utenti(idUtente),
+
+FOREIGN KEY (idUtenteVisto) REFERENCES utenti(idUtente)
+
+);
 

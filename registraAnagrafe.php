@@ -26,7 +26,7 @@ include("./templates/header.php");
             <select id="selezioneSesso" required>
                 <option value="femmina">Femmina</option>
                 <option value="maschio">Maschio</option>
-                <option value="Non specificato">Preferisco non specificarlo</option>
+                <option value="non specificato">Preferisco non specificarlo</option>
             </select>
 
             <label for="lingua">Lingua parlata:</label><br>

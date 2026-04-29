@@ -1,5 +1,6 @@
 <?php
 include ('./templates/header.php');
+include('./conf/db_config.php');
 
     $stmt = $conn->prepare("SELECT abitudini.nomeAbitudine FROM abitudini");
     $stmt->execute(); 
@@ -45,6 +46,3 @@ $abitudini = $result->fetch_all(MYSQLI_ASSOC); // fetch ALL rows, not just one
 </div>
 
 <?php include('./templates/footer.php'); ?>
-<?php
-include ('./templates/footer.php');
-?>

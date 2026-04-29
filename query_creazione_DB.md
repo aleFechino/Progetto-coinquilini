@@ -28,8 +28,6 @@ universita\_lavoro VARCHAR(100),
 
 cerca\_casa BOOLEAN,
 
-offre\_casa BOOLEAN,
-
 linguaParlata VARCHAR(50),
 
 dataNascita DATE,
@@ -43,6 +41,10 @@ cellulare VARCHAR(15),
 soprannome VARCHAR(50),
 
 nickname\_instagram VARCHAR(50)
+
+luogo\_ricerca INT,
+
+FOREIGN KEY (luogo\_ricerca) REFERENCES citta(idCitta)
 
 );
 

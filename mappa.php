@@ -35,7 +35,7 @@ try {
 </head>
 <body>
 
-<a href="aggiungi_casa.php" class="btn-aggiungi">+ Aggiungi casa</a>
+<a href="offreCasa.php" class="btn-aggiungi">+ Aggiungi casa</a>
 <div id="mappa"></div>
 
 <!-- Libreria Leaflet -->

@@ -13,7 +13,7 @@
     }
 
     function cryptPwd($pwd){
-        $salt = "a2rewsqw1FDA2edSD";
+        $salt="1234567890987654321";        //il sale deve essere sempre lo stesso. Quando inserisco e quando controllo
         $pswcript = crypt($pwd, $salt);
         return $pswcript;
     }

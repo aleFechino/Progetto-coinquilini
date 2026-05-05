@@ -1,28 +1,7 @@
 <?php
-$host = "localhost";
-$dbname = "db_coinquilini";
-$user = "root";
-$pass = "";
-
-try {
-    // Connessione al database
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Recupera tutte le case con coordinate valide e il nome del proprietario
-    $stmt = $pdo->query("
-        SELECT c.idCasa, c.via, c.civico, c.nPosti, c.nStanzeLetto, c.nBagni, c.metratura, c.descrizione, c.lat, c.lng,
-               u.nomeUtente, u.cognomeUtente
-        FROM casa c
-        JOIN utenti u ON c.idProprietario = u.idUtente
-        WHERE c.lat IS NOT NULL AND c.lng IS NOT NULL
-    ");
-    $case = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    die("Errore DB: " . $e->getMessage());
-}
+include('./templates/header_riservata.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -36,8 +15,10 @@ try {
 <body>
 
 <a href="offreCasa.php" class="btn-aggiungi">+ Aggiungi casa</a>
+
 <div id="mappa"></div>
 
+<!--CHAT-->
 <!-- Libreria Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>

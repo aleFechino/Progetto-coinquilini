@@ -3,7 +3,7 @@ include("./templates/header.php");
 ?>
 
     <section>
-        <form method="POST" action="./php/registrazione.php">
+        <form method="POST" action="./php/registrazioneA.php">
             <label for="nome">Nome:</label><br>
             <input type="text" id="nome" name="nome" placeholder="nome" required><br>
 

@@ -32,6 +32,9 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
 <section>
     <form method="POST" action="./php/aggiungiCasaCheck.php" class="form">
 
+        <label for="citta">citta</label><br>
+        <input type="text" id="citta" name="citta" value=""><br>
+
         <label for="via">via</label><br>
         <input type="text" id="via" name="via" value=""><br>
 

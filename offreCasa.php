@@ -28,4 +28,36 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
     <h1>AGGIUNGI LA CASA</h1>
 
 </body>
+
+<section>
+    <form method="POST" action="./php/aggiungiCasaCheck.php" class="form">
+
+        <label for="via">via</label><br>
+        <input type="text" id="via" name="via" value=""><br>
+
+        <label for="civico">civico</label><br>
+        <input type="text" id="civico" name="civico" value=""><br>
+
+        <label for="cap">cap</label><br>
+        <input type="text" id="cap" name="cap" value=""><br>
+
+        <label for="nPosti">nPosti</label><br>
+        <input type="text" id="nPosti" name="nPosti" value=""><br>
+
+        <label for="nStanzeLetto">nStanzeLetto</label><br>
+        <input type="text" id="nStanzeLetto" name="nStanzeLetto" value=""><br>
+
+        <label for="nBagni">nBagni</label><br>
+        <input type="text" id="nBagni" name="nBagni" value=""><br>
+
+        <label for="metratura">metratura</label><br>
+        <input type="text" id="metratura" name="metratura" value=""><br>
+
+        <label for="descrizione">descrizione</label><br>
+        <input type="text" id="descrizione" name="descrizione" value=""><br>
+
+        <input type="submit" value="aggiungiCasa">
+
 </html>
+
+

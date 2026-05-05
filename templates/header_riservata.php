@@ -22,8 +22,8 @@
                     <ul>
                         <li><a href="./home.php">Home</a></li>
                         <li><a href="./conquiPreferiti.php">Conquilini preferiti</a></li>
-                        <li><a href="./cercaCase.php">Cerca case</a></li>
-                        <li><a href="./offriCasa.php">Offri casa</a></li>
+                        <li><a href="./cercaCasa.php">Cerca case</a></li>
+                        <li><a href="./offreCasa.php">Offri casa</a></li>
                         <li><a href="./profiloUtente.php">Profilo</a></li>
                         <li><a href="./logout.php">Logout</a></li>
                     </ul>

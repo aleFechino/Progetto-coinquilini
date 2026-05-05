@@ -11,6 +11,7 @@ include ('./templates/header.php');
         <h1>LOGIN</h1>
 
         <?php include ('./templates/header.php'); ?>    
+        <?php include ('./templates/form_login.php'); ?>    
         
         <div class="register-link">
             Don't have an account? <a href="./registraAnagrafe.php">Sign up</a>

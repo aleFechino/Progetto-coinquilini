@@ -2,9 +2,10 @@
 
 include("../conf/db_config.php");
 
-$pwdCript=criptPwd($_POST["pwd"]);
+$pwdCript=cryptPwd($_POST["password"]);
 
-$stmt = $conn->prepare("SELECT * FROM utenti WHERE mail = ? AND pwd = ?"); 
+
+$stmt = $conn->prepare("SELECT * FROM utenti WHERE mail = ? AND psw = ?"); 
 $stmt->bind_param("ss", $_POST['user'], $pwdCript);  
 $stmt->execute();
 

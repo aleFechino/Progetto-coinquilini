@@ -1,8 +1,6 @@
 <?php
-$host = "localhost";
-$dbname = "db_coinquilini";
-$user = "root";
-$pass = "";
+include('./templates/header_riservata.php');
+include
 
 try {
     // Connessione al database
@@ -36,8 +34,10 @@ try {
 <body>
 
 <a href="offreCasa.php" class="btn-aggiungi">+ Aggiungi casa</a>
+
 <div id="mappa"></div>
 
+<!--CHAT-->
 <!-- Libreria Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>

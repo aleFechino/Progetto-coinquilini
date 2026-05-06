@@ -9,7 +9,7 @@ $interessi=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="container mt-4">
-  <form method="POST" action="registrazioneAbitudini.php">
+  <form method="POST" action="registrazioneI.php">
     <div class="d-flex flex-wrap gap-2">
       <?php foreach ($interessi as $interesse): ?>
         <input type="checkbox" class="btn-check" name="interessi[]" 

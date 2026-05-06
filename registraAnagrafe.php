@@ -1,64 +1,81 @@
-<?php
-include("./templates/header.php");
-?>
+<?php include("./templates/header.php"); ?>
 
-    <section>
-        <form method="POST" action="./php/registrazioneA.php">
-            <label for="nome">Nome:</label><br>
-            <input type="text" id="nome" name="nome" placeholder="nome" required><br>
+<section>
+  <form method="POST" action="./php/registrazioneA.php">
 
-            <label for="cognome">Cognome:</label><br>
-            <input type="text" id="cognome" name="cognome" placeholder="cognome" required><br><br>
+    <!-- Dati personali -->
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Mario" required>
 
-            <label for="user">Soprannome:</label><br>
-            <input type="text" id="user" name="user" placeholder="user"><br>
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" name="cognome" placeholder="Rossi" required>
 
-            <label for="mail">E-mail:</label><br>
-            <input type="text" id="mail" name="mail" placeholder="nome.cognome@gmail.com" required><br>
+    <label for="user">Soprannome:</label>
+    <input type="text" id="user" name="user" placeholder="mario92">
 
-            <label for="psw">Password:</label><br>
-            <input type="password" id="psw" name="psw" placeholder="password" required><br>
+    <label for="mail">E-mail:</label>
+    <input type="email" id="mail" name="mail" placeholder="nome.cognome@gmail.com" required>
 
-            <label for="dataNascita">Data nascita:</label><br>
-            <input type="date" id="dataNascita" name="dataNascita" required><br><br>
+    <label for="psw">Password:</label>
+    <input type="password" id="psw" name="psw" placeholder="••••••••" required>
 
-            <label for="sesso">Sesso:</label><br>
-            <select id="selezioneSesso" required>
-                <option value="femmina">Femmina</option>
-                <option value="maschio">Maschio</option>
-                <option value="non specificato">Preferisco non specificarlo</option>
-            </select>
+    <label for="dataNascita">Data di nascita:</label>
+    <input type="date" id="dataNascita" name="dataNascita" required>
 
-            <label for="lingua">Lingua parlata:</label><br>
-            <select id="selezioneLingua" required>
-                <option value="italiano">Italiano</option>
-                <option value="inglese">Inglese</option>
-                <option value="francese">Francese</option>
-                <option value="spagnolo">Spagnolo</option>
-            </select>
+    <!-- ✅ name aggiunto ai select -->
+    <label for="selezioneSesso">Sesso:</label>
+    <select id="selezioneSesso" name="sesso" required>
+      <option value="">— seleziona —</option>
+      <option value="femmina">Femmina</option>
+      <option value="maschio">Maschio</option>
+      <option value="non specificato">Preferisco non specificarlo</option>
+    </select>
 
-            <label for="ruolo">Ruolo:</label><br>
-            <select id="ruolo" required>
-                <option value="cerco">Cerco casa</option>
-                <option value="offro">Offro casa</option>
-                <option value="cerco-offro">Cerco e offro casa</option>
-            </select>
+    <label for="selezioneLingua">Lingua parlata:</label>
+    <select id="selezioneLingua" name="lingua" required>
+      <option value="">— seleziona —</option>
+      <option value="italiano">Italiano</option>
+      <option value="inglese">Inglese</option>
+      <option value="francese">Francese</option>
+      <option value="spagnolo">Spagnolo</option>
+    </select>
 
-            <label for="universitaLavoro">Università o lavoro:</label><br>
-            <input type="text" id="universitaLavoro" name="universitaLavoro" required><br><br>
+    <label for="ruolo">Ruolo:</label>
+    <select id="ruolo" name="ruolo" required>
+      <option value="">— seleziona —</option>
+      <option value="cerco">Cerco casa</option>
+      <option value="offro">Offro casa</option>
+      <option value="cerco-offro">Cerco e offro casa</option>
+    </select>
 
-            <label for="telefono">Numero di telefono:</label><br>
-            <input type="text" id="telefono" name="telefono"><br>
+    <!-- ✅ Città caricate dal DB -->
+    <label for="luogoRicerca">Dove cerchi il coinquilino:</label>
+    <select id="luogoRicerca" name="luogo_ricerca" required>
+      <option value="">— seleziona città —</option>
+      <?php
+        // Includi qui la tua connessione al DB
+        include("./php/db.php");
 
+        $stmt = $pdo->query("SELECT id, nome FROM citta ORDER BY nome ASC");
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          $id   = htmlspecialchars($row['id']);
+          $nome = htmlspecialchars($row['nome']);
+          echo "<option value=\"$id\">$nome</option>";
+        }
+      ?>
+    </select>
 
-            <label for="instagram">Nickname instagram</label><br>
-            <input type="text" id="instagram" name="instagram"><br><br>
+    <label for="universitaLavoro">Università o lavoro:</label>
+    <input type="text" id="universitaLavoro" name="universitaLavoro" required>
 
+    <label for="telefono">Numero di telefono:</label>
+    <input type="tel" id="telefono" name="telefono">
 
-            <a href="./registraInteressi.php"><button type="button">Avanti</button></a>
-        </form>
-    </section>
+    <label for="instagram">Nickname Instagram:</label>
+    <input type="text" id="instagram" name="instagram">
 
-<?php
-include("./templates/footer.php");
-?>
+    <input type="submit" value="Salva e continua">
+  </form>
+</section>
+
+<?php include("./templates/footer.php"); ?>

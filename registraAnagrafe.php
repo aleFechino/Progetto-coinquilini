@@ -111,7 +111,7 @@ include("./conf/db_config.php"); //[cite: 20]
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    <p class="text-muted">Hai già un account? <a href="./login.php" class="text-decoration-none fw-bold" style="color: #fd267a;">Accedi qui</a></p>
+                    <p class="text-muted">Hai già un account? <a href="./index.php" class="text-decoration-none fw-bold" style="color: #fd267a;">Accedi qui</a></p>
                 </div>
             </div>
         </div>

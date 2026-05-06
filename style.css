@@ -1,0 +1,55 @@
+/* style.css */
+
+/* Sfondo della pagina di login con il gradiente Tinder */
+.login-bg-gradient {
+    background: linear-gradient(180deg, #fd267a 0%, #ff6036 100%) !important;
+    min-height: 100vh; /* Copre tutta l'altezza dello schermo */
+    width: 100%;
+}
+
+/* Stile per gli input trasparenti */
+.login-input {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    height: 55px;
+}
+
+.login-input::placeholder {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.login-input:focus {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-color: white !important;
+    box-shadow: none !important;
+    color: white !important;
+}
+
+/* Bottone bianco stile Tinder */
+.btn-login-white {
+    background-color: white !important;
+    color: #fd267a !important;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+/* Animazione per il bottone */
+.btn-light:hover {
+    background-color: #ffffff !important;
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
+}
+/* Link di registrazione */
+.register-link a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+}
+
+.register-link a:hover {
+    opacity: 0.8;
+}

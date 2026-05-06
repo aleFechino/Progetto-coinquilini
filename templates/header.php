@@ -1,24 +1,26 @@
-<?php
-
-session_start();
-session_unset();
-session_destroy();
-
-//include ('./templates/header.php');
-?>
-    <section>
-    <div class="login-container">
-        <h1></h1>
-
-        <?php include ('./templates/header.php'); ?>    
-        <?php include ('./templates/form_login.php'); ?>    
-        
-        <div class="register-link">
-            Don't have an account? <a href="./registraAnagrafe.php">Sign up</a>
-        </div>
-    </div>
-    </section>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RooMatch - Trova il tuo coinquilino</title>
     
-<?php
-include ('./templates/footer.php');
-?>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons (Opzionale, utile per icone social) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Il tuo file CSS personalizzato -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <!-- Header pulito: mostriamo il titolo solo se NON siamo nella pagina di login -->
+    <?php if (basename($_SERVER['PHP_SELF']) != 'login.php'): ?>
+    <header class="bg-white shadow-sm py-3 mb-4">
+        <div class="container text-center">
+            <h1 class="h3 fw-bold text-primary mb-0">RooMatch</h1>
+            <small class="text-muted">Cerca il tuo coinquilino perfetto</small>
+        </div>
+    </header>
+    <?php endif; ?>

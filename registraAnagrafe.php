@@ -19,7 +19,7 @@ include("./conf/db_config.php"); //[cite: 20]
                     </div>
                     
                     <div class="card-body p-4 p-md-5">
-                        <form method="POST" action="./php/registrazioneA.php">
+                        <form method="POST" action="./php/registrazioneAn.php">
                             
                             <!-- Sezione 1: Account -->
                             <h5 class="section-title mb-3">Dati Account</h5>

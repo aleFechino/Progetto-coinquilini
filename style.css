@@ -1,16 +1,404 @@
-/* CSS PER LA MAPPA */
+/* ====================================================
+   RooMatch — style.css
+   Palette: indaco #5c6ef8 | verde #22c55e | bianco puro
+   Font: Outfit (tutto)
+==================================================== */
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
-/* Mappa a schermo intero */
+/* ── VARIABILI ──────────────────────────────────── */
+:root {
+    --primary:    #5c6ef8;
+    --primary-dk: #4451d6;
+    --primary-lt: #eef0ff;
+    --accent:     #22c55e;
+    --dark:       #0f172a;
+    --mid:        #64748b;
+    --muted:      #94a3b8;
+    --light:      #f8fafc;
+    --white:      #ffffff;
+    --border:     #e2e8f0;
+    --radius-sm:  8px;
+    --radius:     14px;
+    --radius-lg:  20px;
+    --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+    --shadow:     0 4px 24px rgba(92,110,248,.12);
+    --shadow-lg:  0 12px 40px rgba(92,110,248,.18);
+    --trans:      .18s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── RESET ──────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: var(--dark);
+    background: var(--light);
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 { font-family: 'Outfit', sans-serif; line-height: 1.2; font-weight: 700; }
+a { color: var(--primary); text-decoration: none; transition: color var(--trans); }
+a:hover { color: var(--primary-dk); }
+
+/* ── HEADER PUBBLICO ────────────────────────────── */
+body > header:first-of-type {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+}
+body > header:first-of-type h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -.5px;
+}
+
+/* ── HEADER PRIVATO ─────────────────────────────── */
+header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    box-shadow: var(--shadow-sm);
+}
+
+header .contenitore {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 28px;
+    height: 64px;
+}
+
+header h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--dark);
+    letter-spacing: -.4px;
+}
+
+header h1::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-left: 4px;
+    vertical-align: super;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+}
+
+header nav ul li a {
+    color: var(--mid);
+    font-size: .875rem;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    transition: background var(--trans), color var(--trans);
+}
+
+header nav ul li a:hover {
+    background: var(--primary-lt);
+    color: var(--primary);
+}
+
+header nav ul li:last-child a {
+    color: #ef4444;
+}
+header nav ul li:last-child a:hover {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+header nav ul li a.attivo {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* ── FOOTER ─────────────────────────────────────── */
+footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+}
+footer p { font-size: .82rem; color: var(--muted); }
+
+/* ── SEZIONE ────────────────────────────────────── */
+section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 16px;
+}
+
+/* ── CARD BASE ──────────────────────────────────── */
+.login-container,
+form,
+.abitudini-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 44px 40px;
+    width: 100%;
+}
+
+/* ── LOGIN ──────────────────────────────────────── */
+.login-container {
+    max-width: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: var(--primary-lt);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.login-container > * { position: relative; z-index: 1; }
+
+.login-container h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 28px;
+}
+
+.register-link {
+    margin-top: 22px;
+    font-size: .88rem;
+    color: var(--mid);
+    text-align: center;
+}
+
+/* ── INPUT GROUP ────────────────────────────────── */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin: 0;
+}
+
+/* ── INPUT, SELECT ──────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 11px 15px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Outfit', sans-serif;
+    font-size: .95rem;
+    color: var(--dark);
+    background: var(--light);
+    transition: border-color var(--trans), box-shadow var(--trans), background var(--trans);
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(92,110,248,.15);
+}
+
+input::placeholder { color: var(--muted); font-weight: 400; }
+
+label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--mid);
+    margin-bottom: 5px;
+    margin-top: 14px;
+}
+
+/* ── BUTTON ─────────────────────────────────────── */
+button[type="submit"],
+button[type="button"],
+input[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+    margin-top: 20px;
+    width: 100%;
+    letter-spacing: .1px;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover,
+input[type="submit"]:hover {
+    background: var(--primary-dk);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(92,110,248,.35);
+}
+
+button[type="submit"]:active,
+button[type="button"]:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* ── FORM GENERICO ──────────────────────────────── */
+form { max-width: 540px; }
+
+form h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    color: var(--dark);
+}
+
+.form { display: flex; flex-direction: column; }
+
+/* ── ABITUDINI ──────────────────────────────────── */
+.abitudini-container { max-width: 660px; }
+
+.abitudini-container h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+    color: var(--dark);
+}
+
+.abitudine-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+
+.abitudine-row:last-of-type { border-bottom: none; }
+
+.abitudine-row > label {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--dark);
+    flex: 1;
+}
+
+.rating-buttons { display: flex; gap: 6px; }
+
+.rating-option input[type="radio"] { display: none; }
+
+.rating-option span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border);
+    font-size: .85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background var(--trans), border-color var(--trans), color var(--trans);
+    color: var(--muted);
+    user-select: none;
+    background: var(--light);
+}
+
+.rating-option span:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-lt);
+}
+
+.rating-option input[type="radio"]:checked + span {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+/* ── MAPPA ──────────────────────────────────────── */
 #mappa { height: 100vh; width: 100%; }
 
-/* Bottone fisso in alto a destra */
 .btn-aggiungi {
-    position: fixed; top: 16px; right: 16px; z-index: 1000;
-    background: #d94f00; color: #fff; padding: 10px 18px;
-    border-radius: 8px; text-decoration: none; font-weight: bold;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--primary);
+    color: var(--white);
+    padding: 11px 22px;
+    border-radius: var(--radius-sm);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    box-shadow: 0 4px 16px rgba(92,110,248,.35);
+    transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
 }
-.btn-aggiungi:hover { background: #1a1a1a; }
+
+.btn-aggiungi:hover {
+    background: var(--primary-dk);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(92,110,248,.45);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 600px) {
+    header .contenitore {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+        gap: 8px;
+    }
+    header nav ul { flex-wrap: wrap; justify-content: center; }
+    section { padding: 28px 12px; }
+
+    .login-container,
+    form,
+    .abitudini-container { padding: 32px 22px; }
+
+    .abitudine-row { flex-direction: column; align-items: flex-start; }
+}

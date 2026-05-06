@@ -1,2 +1,4 @@
 INSERT INTO `citta`(`nomeCitta`) VALUES ('Torino')
+
+
 INSERT INTO `utenti`(`nomeUtente`, `cognomeUtente`, `sesso`, `universita_lavoro`, `cerca_casa`, `offre_casa`, `linguaParlata`, `dataNascita`, `mail`, `psw`, `cellulare`, `soprannome`, `nickname_instagram`, `luogo_ricerca`) VALUES ('Mario','Rossi','maschio','lavoro','true','false','italiano','2006-10-10','mario','12v2zSUnHYIOk','5554444','M','mario.rossi06','1')

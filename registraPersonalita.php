@@ -13,15 +13,15 @@ $personalita=$result->fetch_all(MYSQLI_ASSOC);
     <div class="d-flex flex-wrap gap-2">
       <?php foreach ($personalita as $pers): ?>
         <input type="checkbox" class="btn-check" name="personalita[]" 
-          id="personalita_<?php echo htmlspecialchars($personalita['nomePersonalita']); ?>"
-          value="<?php echo htmlspecialchars($personalita['nomePersonalita']); ?>"
+          id="personalita_<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
+          value="<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
           autocomplete="off"
         >
         <label 
           class="btn btn-outline-primary" 
-          for="personalita_<?php echo htmlspecialchars($personalita['nomePersonalita']); ?>"
+          for="personalita_<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
         >
-          <?php echo htmlspecialchars($personalita['nomePersonalita']); ?>
+          <?php echo htmlspecialchars($pers['nomePersonalita']); ?>
         </label>
       <?php endforeach; ?>
     </div>

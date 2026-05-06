@@ -16,6 +16,10 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
     return null;
 }
 
+
+// query per prendere le città dal DB per poi metterle nel form
+$risultato = $conn->query("SELECT idCitta, nomeCitta FROM citta ORDER BY nomeCitta ASC");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,10 +34,16 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
 </body>
 
 <section>
-    <form method="POST" action="./php/aggiungiCasaCheck.php" class="form">
+    <form method="POST" action="./php/offreCasaCheck.php" class="form">
 
-        <label for="citta">citta</label><br>
-        <input type="text" id="citta" name="citta" value=""><br>
+        <select id="citta" name="citta">
+            <option value="">-- Seleziona una città --</option>
+            <?php
+                while ($riga = $risultato->fetch_assoc()) {
+                echo '<option value="' . $riga['idCitta'] . '">' . $riga['nomeCitta'] . '</option>';
+            }
+            ?>
+        </select><br>    
 
         <label for="via">via</label><br>
         <input type="text" id="via" name="via" value=""><br>
@@ -64,3 +74,6 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
 </html>
 
 
+<?php
+include('./templates/footer.php');
+?>

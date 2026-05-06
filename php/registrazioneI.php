@@ -32,7 +32,12 @@ try {
     exit();
 } catch (Exception $e) {
     $conn->rollback();
-    header("Location: ../registrazioneInteressi.php?errore=db");
+
+    echo "<script> 
+        alert('Errore nel salvataggio dei dati');
+        window.location.href='../registrazioneInteressi.php'
+        </script>"
+
     exit();
 }
 ?>

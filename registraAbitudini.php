@@ -23,7 +23,7 @@ $abitudini = $result->fetch_all(MYSQLI_ASSOC); // fetch ALL rows, not just one
 
 <div class="abitudini-container">
     <h2>Le tue abitudini</h2>
-    <form method="POST" action="salva_valori.php">
+    <form method="POST" action="registrazioneAb.php">
         <?php foreach ($abitudini as $abitudine): ?>
             <div class="abitudine-row">
                 <label><?= htmlspecialchars($abitudine['nomeAbitudine']) ?></label>
@@ -32,7 +32,7 @@ $abitudini = $result->fetch_all(MYSQLI_ASSOC); // fetch ALL rows, not just one
                         <label class="rating-option">
                             <input 
                                 type="radio" 
-                                name="valori[<?= htmlspecialchars($abitudine['nomeAbitudine']) ?>]" 
+                                name="valori[<?= htmlspecialchars($abitudine['id']) ?>]" 
                                 value="<?= $i ?>"
                             >
                             <span><?= $i ?></span>

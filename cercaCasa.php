@@ -1,4 +1,38 @@
 <?php
+<<<<<<< HEAD
+    include('./templates/header_riservata.php');
+?>
+
+<div>
+    <form>
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+        
+        <label for="nStanzeLetto">Numero camere da letto</label><br>
+        <input type="text" id="nStanzeLetto" name="nStanzeLetto" value=""><br>
+
+        <label for="Citta">Numero bagni</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <label for="Citta">Città</label><br>
+        <input type="text" id="Citta" name="Citta" value=""><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+=======
 include('./templates/header_riservata.php');
 require("./conf/db_config.php");
 
@@ -82,3 +116,4 @@ case_db.forEach(function(casa) {
 
 </body>
 </html>
+>>>>>>> 4331ee42c0408e4d259426c96140301047eda799

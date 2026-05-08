@@ -21,59 +21,93 @@ function getCoordinate($via, $civico, $cap, $nomeCitta) {
 $risultato = $conn->query("SELECT idCitta, nomeCitta FROM citta ORDER BY nomeCitta ASC");
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offri casa</title>
-</head>
-<body>
-    <h1>AGGIUNGI LA CASA</h1>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Header Section -->
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Aggiungi la tua Casa</h2>
+                <p class="text-muted">Inserisci i dettagli dell'immobile per trovare il coinquilino ideale.</p>
+            </div>
 
-</body>
+            <!-- Form Card -->
+            <div class="card shadow-lg border-0 rounded-4 p-4 p-md-5">
+                <form method="POST" action="./php/offreCasaCheck.php">
+                    
+                    <!-- Città e Via -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="citta" class="form-label fw-semibold">Città</label>
+                            <select id="citta" name="citta" class="form-select rounded-pill border-2" required>
+                                <option value="">-- Seleziona una città --</option>
+                                <?php while ($riga = $risultato->fetch_assoc()): ?>
+                                    <option value="<?= $riga['idCitta'] ?>"><?= htmlspecialchars($riga['nomeCitta']) ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="via" class="form-label fw-semibold">Via / Indirizzo</label>
+                            <input type="text" id="via" name="via" class="form-control rounded-pill border-2" placeholder="Es. Via Roma" required>
+                        </div>
+                    </div>
 
-<section>
-    <form method="POST" action="./php/offreCasaCheck.php" class="form">
+                    <!-- Civico, CAP e Posti Letto -->
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="civico" class="form-label fw-semibold">Civico</label>
+                            <input type="text" id="civico" name="civico" class="form-control rounded-pill border-2" placeholder="12/A">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="cap" class="form-label fw-semibold">CAP</label>
+                            <input type="text" id="cap" name="cap" class="form-control rounded-pill border-2" placeholder="40100">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="nPosti" class="form-label fw-semibold">Posti Letto</label>
+                            <input type="number" id="nPosti" name="nPosti" class="form-control rounded-pill border-2" min="1">
+                        </div>
+                    </div>
 
-        <select id="citta" name="citta">
-            <option value="">-- Seleziona una città --</option>
-            <?php
-                while ($riga = $risultato->fetch_assoc()) {
-                echo '<option value="' . $riga['idCitta'] . '">' . $riga['nomeCitta'] . '</option>';
-            }
-            ?>
-        </select><br>    
+                    <hr class="my-4 opacity-50">
 
-        <label for="via">via</label><br>
-        <input type="text" id="via" name="via" value=""><br>
+                    <!-- Dettagli Tecnici -->
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="nStanzeLetto" class="form-label fw-semibold">Camere</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-door-open"></i></span>
+                                <input type="number" id="nStanzeLetto" name="nStanzeLetto" class="form-control border-start-0 rounded-end-pill" placeholder="N.">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="nBagni" class="form-label fw-semibold">Bagni</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-droplet"></i></span>
+                                <input type="number" id="nBagni" name="nBagni" class="form-control border-start-0 rounded-end-pill" placeholder="N.">
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="metratura" class="form-label fw-semibold">Metratura (mq)</label>
+                            <input type="text" id="metratura" name="metratura" class="form-control rounded-pill border-2" placeholder="Es. 85">
+                        </div>
+                    </div>
 
-        <label for="civico">civico</label><br>
-        <input type="text" id="civico" name="civico" value=""><br>
+                    <!-- Descrizione -->
+                    <div class="mb-4">
+                        <label for="descrizione" class="form-label fw-semibold">Descrizione</label>
+                        <textarea id="descrizione" name="descrizione" class="form-control border-2" rows="4" style="border-radius: 15px;" placeholder="Raccontaci qualcosa della casa..."></textarea>
+                    </div>
 
-        <label for="cap">cap</label><br>
-        <input type="text" id="cap" name="cap" value=""><br>
+                    <!-- Submit Button -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm fw-bold border-0" 
+                                style="background: linear-gradient(90deg, #fd267a, #ff6036);">
+                            PUBBLICA ANNUNCIO <i class="bi bi-house-add ms-2"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <label for="nPosti">nPosti</label><br>
-        <input type="text" id="nPosti" name="nPosti" value=""><br>
-
-        <label for="nStanzeLetto">nStanzeLetto</label><br>
-        <input type="text" id="nStanzeLetto" name="nStanzeLetto" value=""><br>
-
-        <label for="nBagni">nBagni</label><br>
-        <input type="text" id="nBagni" name="nBagni" value=""><br>
-
-        <label for="metratura">metratura</label><br>
-        <input type="text" id="metratura" name="metratura" value=""><br>
-
-        <label for="descrizione">descrizione</label><br>
-        <input type="text" id="descrizione" name="descrizione" value=""><br>
-
-        <input type="submit" value="aggiungiCasa">
-
-</html>
-
-
-<?php
-include('./templates/footer.php');
-?>
+<?php include('./templates/footer.php'); ?>

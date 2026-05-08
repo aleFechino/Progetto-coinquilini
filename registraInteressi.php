@@ -2,24 +2,24 @@
 include("./templates/header.php");
 
 include("./conf/db_config.php");
-$stmt= $conn->prepare("SELECT nomeInteresse FROM interessi");
+$stmt= $conn->prepare("SELECT idInteresse,nomeInteresse FROM interessi");
 $stmt->execute();
 $result= $stmt->get_result(); //prendo i risultati
 $interessi=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="container mt-4">
-  <form method="POST" action="registrazioneI.php">
+  <form method="POST" action="./php/registrazioneI.php">
     <div class="d-flex flex-wrap gap-2">
       <?php foreach ($interessi as $interesse): ?>
         <input type="checkbox" class="btn-check" name="interessi[]" 
-          id="interesse_<?php echo htmlspecialchars($interesse['nomeInteresse']); ?>"
-          value="<?php echo htmlspecialchars($interesse['nomeInteresse']); ?>"
+          id="interesse_<?php echo htmlspecialchars($interesse['idInteresse']); ?>"
+          value="<?php echo htmlspecialchars($interesse['idInteresse']); ?>"
           autocomplete="off"
         >
         <label 
           class="btn btn-outline-primary" 
-          for="interesse_<?php echo htmlspecialchars($interesse['nomeInteresse']); ?>"
+          for="interesse_<?php echo htmlspecialchars($interesse['idInteresse']); ?>"
         >
           <?php echo htmlspecialchars($interesse['nomeInteresse']); ?>
         </label>

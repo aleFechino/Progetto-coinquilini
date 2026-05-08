@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('./conf/db_config.php');
+include('../conf/db_config.php');
 
 // Controlla che l'utente sia loggato/registrato e che abbia un ID in sessione
 if (!isset($_SESSION['login'])) {
@@ -8,22 +8,23 @@ if (!isset($_SESSION['login'])) {
     exit();
 }
 
-$id_utente = $_SESSION['id_utente'];
+$id_utente = $_SESSION['id'];
 
 if (empty($_POST['valori'])) {
     header('Location: registraAbitudini.php');
     exit;
 }
 
-$abitudini = $_POST['valori'];
-// Prepare insert statement
-$stmt = $conn->prepare("INSERT INTO utente_abitudini(idutente, idAbitudine, valore) VALUES (?, ?, ?)");
+$abitudini_ricevute = $_POST['valori'];
 
 try{
-    foreach ($valori as $id_abitudine => $valore) {
-        $id_abitudine = (int) $id_abitudine; 
-        $valore       = (int) $valore;      
-        $stmt->bind_param("iii", $id_utente, $id_abitudine, $valore);
+    // Prepare insert statement
+    $stmt = $conn->prepare("INSERT INTO utente_abitudini(idutente, idAbitudine, valore) VALUES (?, ?, ?)");
+
+    foreach ($abitudini_ricevute as $id_abitudine => $valore) {
+        $id_ab_int = (int) $id_abitudine; 
+        $valore_int= (int) $valore;      
+        $stmt->bind_param("iii", $id_utente, $id_ab_int, $valore_int);
         $stmt->execute();
     }
     $conn->commit();
@@ -36,10 +37,12 @@ catch (Exception $e) {
     echo "<script>
             alert('Errore nel salvataggio dei dati')
             window.location.href ='../registrazioneAbitudini'.php)
-            </script>"
+            </script>";
     exit;
 } finally {
-    $stmt->close();
+    if (isset($stmt)) {
+        $stmt->close();
+    }
     $conn->close();
 }
 ?>

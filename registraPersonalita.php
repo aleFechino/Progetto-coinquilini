@@ -2,24 +2,24 @@
 include("./templates/header.php");
 
 include("./conf/db_config.php");
-$stmt= $conn->prepare("SELECT nomePersonalita FROM personalita");
+$stmt= $conn->prepare("SELECT idPersonalita, nomePersonalita FROM personalita");
 $stmt->execute();
 $result= $stmt->get_result(); //prendo i risultati
 $personalita=$result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="container mt-4">
-  <form method="POST" action="registrazioneP.php">
+  <form method="POST" action="./php/registrazioneP.php">
     <div class="d-flex flex-wrap gap-2">
       <?php foreach ($personalita as $pers): ?>
         <input type="checkbox" class="btn-check" name="personalita[]" 
-          id="personalita_<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
-          value="<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
+          id="personalita_<?php echo htmlspecialchars($pers['idPersonalita']); ?>"
+          value="<?php echo htmlspecialchars($pers['idPersonalita']); ?>"
           autocomplete="off"
         >
         <label 
           class="btn btn-outline-primary" 
-          for="personalita_<?php echo htmlspecialchars($pers['nomePersonalita']); ?>"
+          for="personalita_<?php echo htmlspecialchars($pers['idPersonalita']); ?>"
         >
           <?php echo htmlspecialchars($pers['nomePersonalita']); ?>
         </label>

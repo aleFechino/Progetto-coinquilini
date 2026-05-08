@@ -16,18 +16,46 @@
         exit();
     }
     ?>
-    <header>
-            <div class="contenitore">
-                <h1>RooMatch</h1>
-                <nav>
-                    <ul>
-                        <li><a href="./home.php">Home</a></li>
-                        <li><a href="./conquiPreferiti.php">Conquilini preferiti</a></li>
-                        <li><a href="./cercaCasa.php">Cerca case</a></li>
-                        <li><a href="./offreCasa.php">Offri casa</a></li>
-                        <li><a href="./profiloUtente.php">Profilo</a></li>
-                        <li><a href="./logout.php">Logout</a></li>
-                    </ul>
-                </nav>
-            </div>
-    </header>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold fs-3" href="./home.php" style="background: linear-gradient(90deg, #fd267a, #ff6036); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            RooMatch
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link px-3 fw-semibold text-dark" href="./home.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 fw-semibold text-dark" href="./conquiPreferiti.php">Preferiti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 fw-semibold text-dark" href="./cercaCasa.php">Cerca Casa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 fw-semibold text-dark" href="./offreCasa.php">Offri Casa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 fw-semibold text-dark" href="./profiloUtente.php">
+                        <i class="bi bi-person-circle fs-5"></i> Profilo
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-3">
+                    <a class="btn btn-outline-danger rounded-pill px-4 fw-bold border-2" href="./logout.php" style="border-color: #fd267a; color: #fd267a;">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>

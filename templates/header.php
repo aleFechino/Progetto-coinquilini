@@ -19,7 +19,9 @@
     <?php if (basename($_SERVER['PHP_SELF']) != 'login.php'): ?>
     <header class="bg-white shadow-sm py-3 mb-4">
         <div class="container text-center">
-            <h1 class="h3 fw-bold text-primary mb-0">RooMatch</h1>
+            <h1 class="h3 fw-bold mb-0" style="background: linear-gradient(90deg, #fd267a, #ff6036); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+    RooMatch
+</h1>
             <small class="text-muted">Cerca il tuo coinquilino perfetto</small>
         </div>
     </header>

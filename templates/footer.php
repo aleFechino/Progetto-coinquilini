@@ -1,19 +1,31 @@
-<!-- Footer migliorato -->
-    <footer class="footer mt-auto py-4 bg-white border-top">
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-md-start">
-                    <span class="text-muted">&copy; <?php echo date('Y'); ?> <strong>RooMatch</strong>. Tutti i diritti riservati.</span>
-                </div>
-                <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                    <a href="#" class="text-muted text-decoration-none me-3 small">Privacy</a>
-                    <a href="#" class="text-muted text-decoration-none small">Termini di servizio</a>
-                </div>
+<!-- Footer Styled for RooMatch -->
+<footer class="footer mt-auto py-5 bg-white border-top">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Brand and Copyright -->
+            <div class="col-md-4 text-center text-md-start">
+                <h5 class="fw-bold mb-1" style="background: linear-gradient(90deg, #fd267a, #ff6036); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+                    RooMatch
+                </h5>
+                <p class="text-muted small mb-0">&copy; <?php echo date('Y'); ?> Tutti i diritti riservati.</p>
+            </div>
+
+            <!-- Social Icons (Optional but recommended) -->
+            <div class="col-md-4 text-center my-3 my-md-0">
+                <a href="#" class="text-muted fs-5 me-3 hover-gradient"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-muted fs-5 me-3 hover-gradient"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-muted fs-5 hover-gradient"><i class="bi bi-tiktok"></i></a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4 text-center text-md-end">
+                <a href="#" class="text-muted text-decoration-none me-3 small fw-semibold link-pink">Privacy</a>
+                <a href="#" class="text-muted text-decoration-none small fw-semibold link-pink">Termini di servizio</a>
             </div>
         </div>
-    </footer>
-    
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    </div>
+</footer>
+
+<!-- Ensure Bootstrap JS and Icons are loaded -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-bundle@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

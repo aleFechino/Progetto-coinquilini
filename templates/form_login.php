@@ -1,9 +1,9 @@
 <div class="registration-wrapper py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10">
+            <div class="col-lg-4 col-md-6">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body p-3 p-md-5">
                         <form action="./php/loginCheck.php" method="POST">
                             <h2 class="fw-bold text-dark text-center">Benvenuti!</h2>
                             <p class="text-muted mb-4 text-center">Effettua il login al tuo account</p>
@@ -26,7 +26,7 @@
                                 <!-- <a class="text-muted text-decoration-none small" href="#!">Forgot password?</a> -->
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-center pb-4">
+                            <div class="d-flex align-items-center justify-content-center pb-1">
                                 <p class="mb-0 me-2">Non hai un account?</p>
                                 <a href="./registraAnagrafe.php" class="btn btn-outline-danger rounded-pill px-4">CREA NUOVO</a>
                             </div>

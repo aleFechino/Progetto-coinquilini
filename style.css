@@ -1,3 +1,14 @@
+/* For Chrome, Safari, and newer versions of Edge */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox and IE/Edge */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
 /* Gradiente personalizzato per pulsante e sfondo */
 .gradient-custom-2 {
     background: #fccb90;
@@ -31,4 +42,39 @@ body:has(.login-wrapper) header {
 .btn-primary.gradient-custom-2:hover {
     opacity: 0.9;
     transform: scale(1.01);
+}
+
+.btn-custom {
+    border: 2px solid #fd267a;
+    color: #fd267a;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    border-color: #ff6036;
+    color: #ff6036;
+}
+
+/* When the checkbox is checked */
+.btn-check:checked + .btn-custom {
+    background: linear-gradient(90deg, #fd267a, #ff6036);
+    border-color: transparent;
+    color: white;
+}
+
+/* Change nav link color on hover to your brand pink */
+.navbar-nav .nav-link:hover {
+    color: #fd267a !important;
+}
+
+/* Optional: styling the logout button on hover */
+.navbar-nav .btn-outline-danger:hover {
+    background: linear-gradient(90deg, #fd267a, #ff6036) !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+/* Ensure the toggler icon doesn't look clunky */
+.navbar-toggler:focus {
+    box-shadow: none;
 }

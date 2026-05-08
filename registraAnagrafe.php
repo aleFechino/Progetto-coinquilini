@@ -7,10 +7,10 @@ include("./conf/db_config.php"); //[cite: 20]
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
-                <!-- Progress Bar per indicare lo step attuale -->
+                <!-- Progress Bar per indicare lo step attuale 
                 <div class="progress mb-4" style="height: 8px;">
                     <div class="progress-bar" role="progressbar" style="width: 25%; background: #fd267a;"></div>
-                </div>
+                </div>-->
                 
                 <div class="card shadow-lg border-0 rounded-4">
                     <div class="card-header bg-white border-0 pt-4 text-center">
@@ -104,7 +104,7 @@ include("./conf/db_config.php"); //[cite: 20]
 
                             <div class="text-center mt-5">
                                 <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm fw-bold border-0" style="background: linear-gradient(90deg, #fd267a, #ff6036);">
-                                    SALVA E CONTINUA <i class="bi bi-arrow-right ms-2"></i>
+                                    CONTINUA <i class="bi bi-arrow-right ms-2"></i>
                                 </button>
                             </div>
                         </form>

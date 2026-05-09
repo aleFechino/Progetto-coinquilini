@@ -74,7 +74,7 @@ $risultato = $conn->query("SELECT idCitta, nomeCitta FROM citta ORDER BY nomeCit
                         <div class="col-md-4 mb-3">
                             <label for="nStanzeLetto" class="form-label fw-semibold">Camere</label>
                             <div class="input-group">
-                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-door-open"></i></span>
+                                <span class="input-group-text bg-white border-end-0 rounded-start-pill"><i class="bi bi-houses"></i></span>
                                 <input type="number" id="nStanzeLetto" name="nStanzeLetto" class="form-control border-start-0 rounded-end-pill" placeholder="N.">
                             </div>
                         </div>

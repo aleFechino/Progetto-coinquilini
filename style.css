@@ -29,10 +29,10 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-/* Nasconde l'header standard se disturba il design */
+/* Nasconde l'header standard se disturba il design 
 body:has(.login-wrapper) header {
     display: none !important;
-}
+}*/
 
 /* Stile per i pulsanti */
 .btn-primary.gradient-custom-2 {
@@ -47,7 +47,7 @@ body:has(.login-wrapper) header {
 .btn-custom {
     border: 2px solid #fd267a;
     color: #fd267a;
-    transition: all 0.3s ease;
+    transition:all 0.3s ease;
 }
 
 .btn-custom:hover {

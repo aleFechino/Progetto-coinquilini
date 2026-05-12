@@ -33,7 +33,7 @@ $stmt = $conn->prepare("INSERT INTO casa(idCitta, via, civico, cap, nPosti, nSta
 $stmt->bind_param("sssssssssss", $_POST["citta"], $_POST["via"], $_POST["civico"], $_POST["cap"], $_POST["nPosti"], $_POST["nStanzeLetto"], $_POST["nBagni"], $_POST["metratura"], $_POST["descrizione"], $lat, $lng);
 $stmt->execute();
 
-header("location: ../home.php");
+header("location: ../cercaCasa.php");
 
 $conn->close();
 

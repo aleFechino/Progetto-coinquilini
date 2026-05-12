@@ -10,7 +10,7 @@
 
                             <div class="form-outline mb-4">
                                 <input type="text" id="user" name="user" class="form-control" 
-                                    placeholder="Phone number or email address" required />
+                                    placeholder="Email address" required />
                             </div>
 
                             <div class="form-outline mb-4">

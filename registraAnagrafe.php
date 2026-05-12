@@ -69,7 +69,14 @@ include("./conf/db_config.php");
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lingua" class="form-label small fw-bold">Lingua Parlata</label>
-                                    <input type="text" id="lingua" name="lingua" class="form-control rounded-pill border-2" placeholder="Es: Italiano, Inglese" required>
+                                    <select id="lingua" name="lingua" class="form-select rounded-pill border-2" required>
+                                        <option value="" selected disabled>Seleziona lingua...</option>
+                                        <option value="italiano">Italiano</option>
+                                        <option value="inglese">Inglese</option>
+                                        <option value="francese">Francese</option>
+                                        <option value="spagnolo">Spagnolo</option>
+                                        <option value="altro">Altro</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -77,7 +84,7 @@ include("./conf/db_config.php");
                             <h5 class="section-title mb-3" style="color: #fd267a;">Preferenze e Contatti</h5>
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
-                                    <label for="ruolo" class="form-label small fw-bold">Cosa cerchi?</label>
+                                    <label for="ruolo" class="form-label small fw-bold">Cerchi o offfi?</label>
                                     <select id="ruolo" name="ruolo" class="form-select rounded-pill border-2" required>
                                         <option value="" selected disabled>Seleziona ruolo...</option>
                                         <option value="cerco">Cerco casa</option>
@@ -105,7 +112,7 @@ include("./conf/db_config.php");
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="telefono" class="form-label small fw-bold">Telefono</label>
+                                    <label for="telefono" class="form-label small fw-bold">Telefono (opzionale)</label>
                                     <input type="tel" id="telefono" name="telefono" class="form-control rounded-pill border-2" placeholder="+39...">
                                 </div>
                             </div>

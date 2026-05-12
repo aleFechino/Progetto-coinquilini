@@ -10,13 +10,6 @@
                 <p class="text-muted small mb-0">&copy; <?php echo date('Y'); ?> Tutti i diritti riservati.</p>
             </div>
 
-            <!-- Social Icons (Optional but recommended) -->
-            <div class="col-md-4 text-center my-3 my-md-0">
-                <a href="#" class="text-muted fs-5 me-3 hover-gradient"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-muted fs-5 me-3 hover-gradient"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-muted fs-5 hover-gradient"><i class="bi bi-tiktok"></i></a>
-            </div>
-
             <!-- Quick Links -->
             <div class="col-md-4 text-center text-md-end">
                 <a href="#" class="text-muted text-decoration-none me-3 small fw-semibold link-pink">Privacy</a>

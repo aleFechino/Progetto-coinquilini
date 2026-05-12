@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 include("../conf/db_config.php");
 
 // Prendo il nome della città dal DB tramite l'id selezionato nel form
@@ -29,8 +29,9 @@ $lat = $coordinate ? $coordinate["lat"] : null;
 $lng = $coordinate ? $coordinate["lng"] : null;
 
 // Inserisco la casa nel DB con tutti i dati, lat e lng incluse
-$stmt = $conn->prepare("INSERT INTO casa(idCitta, via, civico, cap, nPosti, nStanzeLetto, nBagni, metratura, descrizione, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssssssss", $_POST["citta"], $_POST["via"], $_POST["civico"], $_POST["cap"], $_POST["nPosti"], $_POST["nStanzeLetto"], $_POST["nBagni"], $_POST["metratura"], $_POST["descrizione"], $lat, $lng);
+
+$stmt = $conn->prepare("INSERT INTO casa(idCitta, via, civico, cap, nPosti, nStanzeLetto, nBagni, metratura, descrizione, lat, lng, idProprietario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssssssss", $_POST["citta"], $_POST["via"], $_POST["civico"], $_POST["cap"], $_POST["nPosti"], $_POST["nStanzeLetto"], $_POST["nBagni"], $_POST["metratura"], $_POST["descrizione"], $lat, $lng, $_SESSION['id']);
 $stmt->execute();
 
 header("location: ../home.php");

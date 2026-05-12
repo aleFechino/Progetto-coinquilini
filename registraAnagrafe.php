@@ -92,6 +92,8 @@ include("./conf/db_config.php");
                                         <option value="cerco-offro">Entrambi</option>
                                     </select>
                                 </div>
+
+                                
                                 <div class="col-md-6">
                                     <label for="luogoRicerca" class="form-label small fw-bold">Città di interesse</label>
                                     <select id="luogoRicerca" name="luogo_ricerca" class="form-select rounded-pill border-2" required>

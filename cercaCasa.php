@@ -1,65 +1,33 @@
 <?php
-<<<<<<< HEAD
-    include('./templates/header_riservata.php');
-?>
-
-<div>
-    <form>
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-        
-        <label for="nStanzeLetto">Numero camere da letto</label><br>
-        <input type="text" id="nStanzeLetto" name="nStanzeLetto" value=""><br>
-
-        <label for="Citta">Numero bagni</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <label for="Citta">Città</label><br>
-        <input type="text" id="Citta" name="Citta" value=""><br>
-
-        <input type="submit" value="Submit">
-    </form>
-</div>
-=======
 include('./templates/header_riservata.php');
 require("./conf/db_config.php");
 
-// QUERY (ti mancava questa!)
 $result = $conn->query("
     SELECT c.idCasa, c.via, c.civico, c.nPosti, c.nStanzeLetto, c.nBagni, c.metratura, c.descrizione, c.lat, c.lng,
            u.nomeUtente, u.cognomeUtente
     FROM casa c
-    JOIN utenti u ON c.idProprietario = u.idUtente
+    LEFT JOIN utenti u ON c.idProprietario = u.idUtente
     WHERE c.lat IS NOT NULL AND c.lng IS NOT NULL
+      AND c.lat != '' AND c.lng != ''
 ");
 
-$case = [];
+if (!$result) {
+    die("Errore query: " . $conn->error);
+}
 
-while($row = $result->fetch_assoc()){
+$case = [];
+while ($row = $result->fetch_assoc()) {
     $case[] = $row;
 }
 ?>
 
-<!-- CSS DOPO header -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 #mappa {
-    height: calc(100vh - 80px); /* evita problemi con header */
+    height: calc(100vh - 80px);
     width: 100%;
 }
 
@@ -89,18 +57,18 @@ while($row = $result->fetch_assoc()){
 <script>
 var case_db = <?= json_encode($case) ?>;
 
-// crea mappa
 var mappa = L.map('mappa').setView([41.9, 12.5], 6);
 
-// layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(mappa);
 
-// markers
 case_db.forEach(function(casa) {
-    if(casa.lat && casa.lng){
-        var marker = L.marker([parseFloat(casa.lat), parseFloat(casa.lng)]).addTo(mappa);
+    var lat = parseFloat(casa.lat);
+    var lng = parseFloat(casa.lng);
+
+    if (!isNaN(lat) && !isNaN(lng)) {
+        var marker = L.marker([lat, lng]).addTo(mappa);
 
         marker.bindPopup(
             "<b>" + casa.via + " " + casa.civico + "</b><br>" +
@@ -116,4 +84,3 @@ case_db.forEach(function(casa) {
 
 </body>
 </html>
->>>>>>> 4331ee42c0408e4d259426c96140301047eda799

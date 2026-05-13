@@ -69,21 +69,19 @@ include('./conf/db_config.php');
 
                                 <!-- Action Buttons -->
                                 <div class="d-flex gap-2 justify-content-center mt-4">
-                                    <form method="POST" action="./php/nonMiPiace.php">
-                                        <input type="hidden" name="idUtenteVisto" value="<?php echo $coinquilino['idUtente']; ?>">
-                                        <button type="submit" class="btn btn-outline-secondary rounded-circle shadow-sm" style="width: 50px; height: 50px;">
-                                            <i class="bi bi-x-lg"></i>
-                                        </button>
-                                    </form>
+                                <form method="POST" action="./php/nonMiPiace.php?id=<?php echo $coinquilino['idUtente']?>" class="flex-grow-1">
+                                    <button type="submit" class="btn btn-outline-secondary rounded-circle shadow-sm" style="width: 50px; height: 50px;">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </form>
 
-                                    <form method="POST" action="./php/miPiace.php" class="flex-grow-1">
-                                        <input type="hidden" name="idUtenteVisto" value="<?php echo $coinquilino['idUtente']; ?>">
-                                        <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold border-0 shadow-sm w-100"
-                                                style="background: linear-gradient(90deg, #fd267a, #ff6036);">
-                                            MI PIACE <i class="bi bi-heart-fill ms-2"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                                <form method="POST" action="./php/miPiace.php?id=<?php echo $coinquilino['idUtente']?>" class="flex-grow-1">
+                                    <button type="submit" class="btn btn-primary rounded-pill px-4 fw-bold border-0 shadow-sm w-100"
+                                            style="background: linear-gradient(90deg, #fd267a, #ff6036);">
+                                        MI PIACE <i class="bi bi-heart-fill ms-2"></i>
+                                    </button>
+                                </form>
+                            </div>
                             </div>
                         </div>
                     </div>

@@ -34,7 +34,7 @@
 
                             <div class="d-flex align-items-center justify-content-center pb-1">
                                 <p class="mb-0 me-2">Non hai un account?</p>
-                                <a href="./registraAnagrafe.php" class="btn btn-outline-danger rounded-pill px-4">CREA NUOVO</a>
+                                <a href="./registraAnagrafe.php" class="btn btn-outline-danger rounded-pill px-4">Registrati</a>
                             </div>
                         </form>
                     </div>

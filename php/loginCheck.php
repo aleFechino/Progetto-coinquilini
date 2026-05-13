@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include("../conf/db_config.php");
 
 $pwdCript=cryptPwd($_POST["password"]);
@@ -14,16 +14,16 @@ $row = $result->fetch_assoc(); //restituisce un array, tipo dizionario python ch
 
 if($result->num_rows>0)
 {
-    session_start();
+    
     $_SESSION['login']='attiva';
     $_SESSION['id']=$row['idUtente'];
     $_SESSION['luogo_ricerca']=$row['luogo_ricerca'];
     $_SESSION['nomeUtente'] = $row['nomeUtente'];
     header("location: ../home.php"); //reindirizza in un'altra pagina
+    exit();
 }
 else
 {
-    include('../templates/header.php');
     ?>
     <section>
     <div class="login-container">

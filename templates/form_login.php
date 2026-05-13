@@ -8,6 +8,12 @@
                             <h2 class="fw-bold text-dark text-center">Benvenuti!</h2>
                             <p class="text-muted mb-4 text-center">Effettua il login al tuo account</p>
 
+                            <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+                                <div class="alert alert-danger text-center rounded-3" role="alert">
+                                    Email o password errati.
+                                </div>
+                            <?php endif; ?>
+
                             <div class="form-outline mb-4">
                                 <input type="text" id="user" name="user" class="form-control" 
                                     placeholder="Email address" required />

@@ -12,32 +12,16 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc(); //restituisce un array, tipo dizionario python che ha come chiave il nome del campo del db e come valore il valore dell'attributo
 
-if($result->num_rows>0)
-{
-    
-    $_SESSION['login']='attiva';
-    $_SESSION['id']=$row['idUtente'];
-    $_SESSION['luogo_ricerca']=$row['luogo_ricerca'];
+if ($result->num_rows > 0) {
+    $_SESSION['login'] = 'attiva';
+    $_SESSION['id'] = $row['idUtente'];
+    $_SESSION['luogo_ricerca'] = $row['luogo_ricerca'];
     $_SESSION['nomeUtente'] = $row['nomeUtente'];
-    header("location: ../home.php"); //reindirizza in un'altra pagina
+    header("location: ../home.php");
     exit();
-}
-else
-{
-    ?>
-    <section>
-    <div class="login-container">
-        <h1>LOGIN</h1>
-        <h3>Password o utente sbagliati</h3>
-
-        <?php include ('./templates/header.php'); ?>    
-        
-        <div class="register-link">
-            Don't have an account? <a href="./registraAnagrafe.php">Sign up</a>
-        </div>
-    </div>
-    </section>
-    <?php
+} else {
+    header("location: ../index.php?error=1");
+    exit();
 }
 
 

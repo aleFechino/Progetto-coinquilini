@@ -6,12 +6,12 @@ include('./conf/db_config.php');
     $stmt = $conn->prepare("
         SELECT u.idUtente, u.nomeUtente, u.cognomeUtente, u.sesso, u.universita_lavoro, u.linguaParlata, u.dataNascita, u.soprannome, u.cellulare, u.mail,u.nickname_instagram
         FROM utenti as u 
-        WHERE u.cerca_casa = 1 AND u.luogo_ricerca = ? AND u.idUtente NOT IN (SELECT utente_visto_utente.idUtenteVisto
+        WHERE u.idUtente!=? AND u.cerca_casa = 1 AND u.luogo_ricerca = ? AND u.idUtente NOT IN (SELECT utente_visto_utente.idUtenteVisto
                                                                       FROM utente_visto_utente
                                                                       WHERE utente_visto_utente.idUtente=?)
     ");
     
-    $stmt->bind_param("ss",$_SESSION['luogo_ricerca'], $_SESSION['id']);
+    $stmt->bind_param("sss",$_SESSION['id'], $_SESSION['luogo_ricerca'], $_SESSION['id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $coinquilini = $result->fetch_all(MYSQLI_ASSOC);

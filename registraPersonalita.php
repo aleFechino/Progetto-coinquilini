@@ -18,6 +18,8 @@ $personalita=$result->fetch_all(MYSQLI_ASSOC);
                 
                 <div class="card shadow-lg border-0 rounded-4">
                   <div class="container mt-4 pb-4">
+                    <h2 class="mb-4">Le tue personalità</h2>
+                    <p>Selezionane almeno 1</p>
                     <form method="POST" action="./php/registrazioneP.php">
                       <div class="d-flex flex-wrap gap-2 mb-4">
                         <?php foreach ($personalita as $pers): ?>

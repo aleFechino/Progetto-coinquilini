@@ -84,7 +84,7 @@ include("./conf/db_config.php");
                             <h5 class="section-title mb-3" style="color: #fd267a;">Preferenze e Contatti</h5>
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
-                                    <label for="ruolo" class="form-label small fw-bold">Cerchi o offfi?</label>
+                                    <label for="ruolo" class="form-label small fw-bold">Cerchi o offri?</label>
                                     <select id="ruolo" name="ruolo" class="form-select rounded-pill border-2" required>
                                         <option value="" selected disabled>Seleziona ruolo...</option>
                                         <option value="cerco">Cerco casa</option>
@@ -96,7 +96,8 @@ include("./conf/db_config.php");
                                 
                                 <div class="col-md-6">
                                     <label for="luogoRicerca" class="form-label small fw-bold">Città di interesse</label>
-                                    <select id="luogoRicerca" name="luogo_ricerca" class="form-select rounded-pill border-2" required>
+                                    <p>Seleziona la città dove stai cercando il coinquilino, non è da selezionare se offri solamente casa</p>
+                                    <select id="luogoRicerca" name="luogo_ricerca" class="form-select rounded-pill border-2">
                                         <option value="" selected disabled>Scegli città...</option>
                                         <?php
                                         $stmt_citta = $conn->query("SELECT idCitta, nomeCitta FROM citta ORDER BY nomeCitta ASC");

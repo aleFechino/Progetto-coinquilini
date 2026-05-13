@@ -17,7 +17,7 @@ $ruolo = $_POST["ruolo"];
 $universitaLavoro = $_POST["universitaLavoro"];
 $telefono = $_POST["telefono"];
 $instagram = $_POST["instagram"];
-$luogo_ricerca = $_POST["luogo_ricerca"];
+$idLuogo_ricerca = $_POST["luogo_ricerca"];
 
 $cercoCasa = 0; // In SQL BOOLEAN è 0 o 1
 $offroCasa = 0;
@@ -38,13 +38,14 @@ $stmt = $conn->prepare("INSERT INTO utenti (nomeUtente, cognomeUtente, sesso, un
 $stmt->bind_param("ssssiisssssssi", 
     $nome, $cognome, $sesso, $universitaLavoro, $cercoCasa, $offroCasa, 
     $lingua, $dataNascita, $mail, $pwdCript, $telefono, $soprannome, 
-    $instagram, $luogo_ricerca
-);
+    $instagram, $idLuogo_ricerca);
 
 if($stmt->execute()){
     session_start();
     $_SESSION['login'] = 'attiva';
     $_SESSION['id'] = $conn->insert_id; // Recupera l'ID appena creato nel DB
+    $_SESSION['luogo_ricerca']=$row['luogo_ricerca'];
+    $_SESSION['nomeUtente'] = $row['nomeUtente'];
     header("Location: ../registraInteressi.php");
     exit();
 } else {

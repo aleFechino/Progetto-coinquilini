@@ -48,8 +48,6 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body>
 
-<a href="offreCasa.php" class="btn-aggiungi">+ Aggiungi casa</a>
-
 <div id="mappa"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

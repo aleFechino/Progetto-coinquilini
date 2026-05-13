@@ -18,11 +18,17 @@
     ?>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand fw-bold fs-3" href="./home.php" style="background: linear-gradient(90deg, #fd267a, #ff6036); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        <div class="d-flex flex-column">
+        <a class="navbar-brand fw-bold fs-3 mb-0"
+        href="./home.php"
+        style="background: linear-gradient(90deg, #fd267a, #ff6036); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             RooMatch
         </a>
-        <p>Ciao <?php $_SESSION["nomeUtente"]?></p>
+
+        <span class="small text-muted ms-1">
+            Ciao <?php echo $_SESSION["nomeUtente"]?>
+        </span>
+    </div>
 
         <!-- Mobile Toggle Button -->
         <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

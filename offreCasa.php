@@ -97,6 +97,20 @@ $risultato = $conn->query("SELECT idCitta, nomeCitta FROM citta ORDER BY nomeCit
                         <textarea id="descrizione" name="descrizione" class="form-control border-2" rows="4" style="border-radius: 15px;" placeholder="Raccontaci qualcosa della casa..."></textarea>
                     </div>
 
+                    <div class="mb-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input"
+                                type="checkbox"
+                                id="viveInCasa"
+                                name="viveInCasa"
+                                value="1">
+
+                            <label class="form-check-label fw-semibold" for="viveInCasa">
+                                Abiterò anch'io nella casa
+                            </label>
+                        </div>
+                    </div>
+
                     <!-- Submit Button -->
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm fw-bold border-0" 

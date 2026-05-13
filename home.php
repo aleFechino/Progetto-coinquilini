@@ -6,22 +6,29 @@ include('./conf/db_config.php');
     $stmt = $conn->prepare("
         SELECT u.idUtente, u.nomeUtente, u.cognomeUtente, u.sesso, u.universita_lavoro, u.linguaParlata, u.dataNascita, u.soprannome, u.cellulare, u.mail,u.nickname_instagram
         FROM utenti as u 
-        WHERE u.cerca_casa = 1 AND u.luogo_ricerca = ? AND u.idUtente NOT IN (SELECT utente_visto_utente.idUtenteVisto
+        WHERE u.idUtente!=? AND u.cerca_casa = 1 AND u.luogo_ricerca = ? AND u.idUtente NOT IN (SELECT utente_visto_utente.idUtenteVisto
                                                                       FROM utente_visto_utente
                                                                       WHERE utente_visto_utente.idUtente=?)
     ");
     
-    $stmt->bind_param("ss",$_SESSION['luogo_ricerca'], $_SESSION['id']);
+    $stmt->bind_param("sss",$_SESSION['id'], $_SESSION['luogo_ricerca'], $_SESSION['id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $coinquilini = $result->fetch_all(MYSQLI_ASSOC);
+
+    $stmt2 = $conn->prepare("SELECT * FROM citta WHERE idCitta=? ");
+    $stmt2->bind_param("s", $_SESSION['luogo_ricerca']);
+    $stmt2->execute();
+
+    $result = $stmt2->get_result();
+    $citta = $result->fetch_assoc(); //restituisce un array, tipo dizionario python che ha come chiave il nome del campo del db e come valore il valore dell'attributo
 
 ?>
 
 <div class="container py-5">
     <div class="text-center mb-5">
         <h2 class="fw-bold">Trova il tuo match</h2>
-        <p class="text-muted">Scopri gli altri utenti che cercano casa a <?php echo htmlspecialchars($_SESSION['luogo_ricerca']); ?></p>
+        <p class="text-muted">Scopri gli altri utenti che cercano casa a <?php echo htmlspecialchars($citta['nomeCitta']); ?></p>
     </div>
 
     <?php if (count($coinquilini) > 0): ?>

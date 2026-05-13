@@ -55,7 +55,7 @@ $stmt3->bind_param("s", $_SESSION['id']);
 
 $stmt3->execute();
 
-header("location: ../home.php");
+header("location: ../cercaCasa.php");
 
 $conn->close();
 

@@ -1,5 +1,6 @@
 <?php
 include("../conf/db_config.php");
+session_start();
 
 // Recupero dati dal POST
 $nome = $_POST["nome"];
@@ -35,13 +36,12 @@ if($ruolo == "cerco"){
 $stmt = $conn->prepare("INSERT INTO utenti (nomeUtente, cognomeUtente, sesso, universita_lavoro, cerca_casa, offre_casa, linguaParlata, dataNascita, mail, psw, cellulare, soprannome, nickname_instagram, luogo_ricerca) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"); 
 
 // bind_param: "ssssiisssssssi" significa stringa o intero per ogni campo
-$stmt->bind_param("ssssiisssssssi", 
+$stmt->bind_param("ssssiissssssss", 
     $nome, $cognome, $sesso, $universitaLavoro, $cercoCasa, $offroCasa, 
     $lingua, $dataNascita, $mail, $pwdCript, $telefono, $soprannome, 
     $instagram, $idLuogo_ricerca);
 
 if($stmt->execute()){
-    session_start();
     $_SESSION['login'] = 'attiva';
     $_SESSION['id'] = $conn->insert_id; // Recupera l'ID appena creato nel DB
     $_SESSION['luogo_ricerca']=$row['luogo_ricerca'];

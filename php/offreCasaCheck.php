@@ -36,6 +36,7 @@ $stmt = $conn->prepare("INSERT INTO casa(idCitta, via, civico, cap, nPosti, nSta
 $stmt->bind_param("ssssssssssss", $_POST["citta"], $_POST["via"], $_POST["civico"], $_POST["cap"], $_POST["nPosti"], $_POST["nStanzeLetto"], $_POST["nBagni"], $_POST["metratura"], $_POST["descrizione"], $lat, $lng, $_SESSION['id']);
 $stmt->execute();
 
+<<<<<<< HEAD
 // Recupera l'id della casa appena inserita nel database
 $idCasa = $conn->insert_id;
 
@@ -56,6 +57,9 @@ $stmt3->bind_param("s", $_SESSION['id']);
 $stmt3->execute();
 
 header("location: ../home.php");
+=======
+header("location: ../cercaCasa.php");
+>>>>>>> 663c26879cf7a853811a41d819ad4b6565ef6ff0
 
 $conn->close();
 

@@ -19,6 +19,40 @@ $case = [];
 while ($row = $result->fetch_assoc()) {
     $case[] = $row;
 }
+
+// >>> AGGIUNTO: recupera la città preferita dell'utente e ne geocodifica le coordinate
+$mapLat  = 41.9;  // fallback: centro Italia
+$mapLng  = 12.5;
+$mapZoom = 11;
+
+$idUtente = $_SESSION['id']; // adatta al nome della tua variabile di sessione
+
+$stmtCitta = $conn->prepare("
+    SELECT ci.nomeCitta
+    FROM utenti u
+    JOIN citta ci ON ci.idCitta = u.luogo_ricerca
+    WHERE u.idUtente = ?
+");
+$stmtCitta->bind_param("i", $idUtente);
+$stmtCitta->execute();
+$cittaUtente = $stmtCitta->get_result()->fetch_assoc();
+
+if ($cittaUtente && !empty($cittaUtente['nomeCitta'])) {
+    $nomeCitta = urlencode($cittaUtente['nomeCitta'] . ', Italia');
+    $url       = "https://nominatim.openstreetmap.org/search?q={$nomeCitta}&format=json&limit=1";
+
+    $context  = stream_context_create(['http' => ['header' => "User-Agent: MyRealEstateApp/1.0\r\n"]]);
+    $response = @file_get_contents($url, false, $context);
+
+    if ($response) {
+        $geo = json_decode($response, true);
+        if (!empty($geo)) {
+            $mapLat  = (float)$geo[0]['lat'];
+            $mapLng  = (float)$geo[0]['lon'];
+        }
+    }
+}
+// <<< FINE AGGIUNTA
 ?>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -55,7 +89,9 @@ while ($row = $result->fetch_assoc()) {
 <script>
 var case_db = <?= json_encode($case) ?>;
 
-var mappa = L.map('mappa').setView([41.9, 12.5], 6);
+// >>> MODIFICATO: setView ora usa le coordinate e lo zoom calcolati dal PHP
+var mappa = L.map('mappa').setView([<?= $mapLat ?>, <?= $mapLng ?>], <?= $mapZoom ?>);
+// <<< FINE MODIFICA
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'

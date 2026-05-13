@@ -30,22 +30,22 @@ $preferiti = $result->fetch_all(MYSQLI_ASSOC);
                             
                             <div class="mt-5 pt-3">
                                 <h4 class="fw-bold mb-0">
-                                    <?php echo htmlspecialchars($coinquilino['nomeUtente'] . " " . $coinquilino['cognomeUtente']); ?>
+                                    <?php echo htmlspecialchars($pref['nomeUtente'] . " " . $pref['cognomeUtente']); ?>
                                 </h4>
-                                <small class="text-muted d-block mb-3">@<?php echo htmlspecialchars($coinquilino['soprannome']); ?></small>
+                                <small class="text-muted d-block mb-3">@<?php echo htmlspecialchars($pref['soprannome']); ?></small>
                                 
                                 <ul class="list-group list-group-flush text-start mb-3">
                                     <li class="list-group-item border-0 px-0">
                                         <i class="bi bi-mortarboard-fill me-2 text-primary"></i> 
-                                        <?php echo htmlspecialchars($coinquilino['universita_lavoro']); ?>
+                                        <?php echo htmlspecialchars($pref['universita_lavoro']); ?>
                                     </li>
                                     <li class="list-group-item border-0 px-0">
                                         <i class="bi bi-translate me-2 text-primary"></i> 
-                                        <?php echo htmlspecialchars($coinquilino['linguaParlata']); ?>
+                                        <?php echo htmlspecialchars($pref['linguaParlata']); ?>
                                     </li>
                                     <li class="list-group-item border-0 px-0 text-truncate">
                                         <i class="bi bi-instagram me-2 text-danger"></i> 
-                                        <?php echo htmlspecialchars($coinquilino['nickname_instagram']); ?>
+                                        <?php echo htmlspecialchars($pref['nickname_instagram']); ?>
                                     </li>
                                 </ul>
 
@@ -70,7 +70,7 @@ $preferiti = $result->fetch_all(MYSQLI_ASSOC);
             <div class="mb-3">
                 <i class="bi bi-person-x display-1 text-muted"></i>
             </div>
-            <h3 class="text-muted">Non ci sono nuovi utenti in questa zona</h3>
+            <h3 class="text-muted">Non ci sono utenti preferiti</h3>
             <a href="home.php" class="btn btn-primary rounded-pill px-5 mt-3 border-0" 
                style="background: linear-gradient(90deg, #fd267a, #ff6036);">Torna alla Home</a>
         </div>

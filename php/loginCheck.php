@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
     header("location: ../home.php");
     exit();
 } else {
-    header("location: ../index.php?error=1");
+    header("location: ../login.php?error=1");
     exit();
 }
 

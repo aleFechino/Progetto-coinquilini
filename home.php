@@ -16,12 +16,19 @@ include('./conf/db_config.php');
     $result = $stmt->get_result();
     $coinquilini = $result->fetch_all(MYSQLI_ASSOC);
 
+    $stmt2 = $conn->prepare("SELECT * FROM citta WHERE idCitta=? ");
+    $stmt2->bind_param("s", $_SESSION['luogo_ricerca']);
+    $stmt2->execute();
+
+    $result = $stmt2->get_result();
+    $citta = $result->fetch_assoc(); //restituisce un array, tipo dizionario python che ha come chiave il nome del campo del db e come valore il valore dell'attributo
+
 ?>
 
 <div class="container py-5">
     <div class="text-center mb-5">
         <h2 class="fw-bold">Trova il tuo match</h2>
-        <p class="text-muted">Scopri gli altri utenti che cercano casa a <?php echo htmlspecialchars($_SESSION['luogo_ricerca']); ?></p>
+        <p class="text-muted">Scopri gli altri utenti che cercano casa a <?php echo htmlspecialchars($citta['nomeCitta']); ?></p>
     </div>
 
     <?php if (count($coinquilini) > 0): ?>

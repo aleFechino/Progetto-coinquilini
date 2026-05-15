@@ -20,6 +20,7 @@ $abitudini = $result->fetch_all(MYSQLI_ASSOC); // fetch ALL rows, not just one
                 <div class="card shadow-lg border-0 rounded-4">
                     <div class="container mt-4 pb-4">
                         <h2 class="mb-4">Le tue abitudini</h2>
+                        <p>1=niente, 2=poco, 3=medio, 4=abbastanza, 5=molto</p>
                         <form method="POST" action="./php/registrazioneAb.php">
                             <?php foreach ($abitudini as $abitudine): ?>
                                 <div class="row mb-3 align-items-center border-bottom pb-2">

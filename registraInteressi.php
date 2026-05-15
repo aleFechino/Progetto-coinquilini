@@ -18,6 +18,8 @@ $interessi=$result->fetch_all(MYSQLI_ASSOC);
                 </div>  -->
                 <div class="card shadow-lg border-0 rounded-4">
                   <div class="container mt-4 pb-4"> 
+                    <h2 class="mb-4">I tuoi interessi</h2>
+                    <p>Selezionane almeno 1</p>
                       <form method="POST" action="./php/registrazioneI.php">
                           <div class="d-flex flex-wrap gap-2 mb-4"> 
                               <?php foreach ($interessi as $interesse): ?>
